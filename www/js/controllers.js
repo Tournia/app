@@ -3,7 +3,25 @@ angular.module('tournia.controllers', [])
 
 .controller('InfoCtrl', function($scope) {})
 
-.controller('MatchesCtrl', function($scope) {})
+.controller('MatchesCtrl', function($scope) {
+    $scope.todos =  [
+        {name: "Do the dishes"},
+        {name: "Take out the trash"}
+    ]
+    $scope.doRefresh = function() {
+        $scope.todos.unshift({name: 'Incoming todo ' + Date.now()})
+        $scope.$broadcast('scroll.refreshComplete');
+        $scope.$apply()
+    };
+        /*
+    $http.get('/my_resource')
+        .success(function(data) {
+            $scope.resource = data.resource
+        })
+        .finally(function() {
+            $scope.$broadcast('scroll.refreshComplete')
+        })*/
+})
 
 .controller('RankingsCtrl', function($scope, Chats) {
     $scope.chats = Chats.all();

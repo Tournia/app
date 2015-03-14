@@ -1,5 +1,10 @@
 <ion-view view-title="Matches">
     <ion-content class="padding">
+        <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+        </ion-refresher>
+        <ion-list>
+            <ion-item ng-repeat="todo in todos">{{todo.name}}</ion-item>
+        </ion-list>
         <div class="list card">
             <div class="item item-divider">Recent Updates</div>
             <div class="item item-body">
