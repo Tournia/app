@@ -1,0 +1,12 @@
+{
+  "name": "tournia",
+  "app_id": "d27f8b9e",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}
