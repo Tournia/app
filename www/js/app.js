@@ -103,9 +103,6 @@ angular.module('tournia', ['ionic', 'tournia.controllers', 'tournia.services'])
             'tab-matches': {
                 templateUrl: 'templates/tab-matches.html',
                 controller: 'MatchesCtrl'
-            },
-            'menuContent': {
-                templateUrl: "templates/tabs.html"
             }
 
         }
