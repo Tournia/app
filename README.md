@@ -3,7 +3,12 @@ This is the mobile app for  [Tournia](http://www.tournia.net/).
 
 ### How to start developing
 
-cd into `app` and run:
+To view the result in your browser:
+```bash
+$ ionic serve [--lab]
+```
+
+To start developing for a mobile platform:
 
 ```bash
 $ ionic platform add ios
