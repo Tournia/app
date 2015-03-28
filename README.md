@@ -6,6 +6,7 @@ This is the mobile app for  [Tournia](http://www.tournia.net/).
 Install [Ionic](http://ionicframework.com/):
 ```bash
 $ npm install -g ionic
+$ npm install
 ```
 *Note: For a global install of -g ionic, OSX/Linux users may need to prefix the command with sudo.*
 

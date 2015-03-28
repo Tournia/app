@@ -1,8 +1,8 @@
 <ion-view view-title="Tournaments">
     <ion-content>
         <ion-list>
-            <ion-item ng-repeat="playlist in playlists" href="#/app/t/{{playlist.id}}/info">
-                {{playlist.title}}
+            <ion-item ng-repeat="tournament in tournaments" href="#/app/t/{{tournament.id}}/info">
+                {{tournament.name}}
             </ion-item>
         </ion-list>
     </ion-content>

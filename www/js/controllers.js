@@ -40,7 +40,7 @@ angular.module('tournia.controllers', [])
     };
 })
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $http, $ionicPopup, $localstorage) {
     // Form data for the login modal
     $scope.loginData = {};
 
@@ -59,29 +59,52 @@ angular.module('tournia.controllers', [])
     // Open the login modal
     $scope.login = function() {
         $scope.modal.show();
+        console.log($scope.loginData);
+//        $scope.loginData.username.trigger('focus');
     };
 
     // Perform the login action when the user submits the login form
     $scope.doLogin = function() {
-        console.log('Doing login', $scope.loginData);
+        self.postData = {
+            client_id: '7_28vnh8348eskogg8080kok80o04owg404s0kk8c8okok8ccs84',
+            client_secret: '5grrcukg2e0w8k8swog8k0k00g40kssgw0kk8cwccs4ko4kok4',
+            grant_type: 'password',
+            username: $scope.loginData.username,
+            password: $scope.loginData.password
+        };
 
-        // Simulate a login delay. Remove this and replace with your login
-        // code if using a login system
-        $timeout(function() {
-            $scope.closeLogin();
-        }, 1000);
+        $http.post('http://192.168.50.4/app_dev.php/api/v2/oauth/token', postData).
+            success(function(data, status, headers, config) {
+                $localstorage.setObject('oauth', data);
+                $scope.closeLogin();
+            }).
+            error(function(data, status, headers, config) {
+                console.error('Error while fetching oauth token');
+
+                if (status == 400) {
+                    // Show incorrect login alert
+                    var alertPopup = $ionicPopup.alert({
+                        title: 'Incorrect login',
+                        template: 'Your username / password combination is not correct'
+                    }).then(function(res) {
+                        $scope.loginData.password = '';
+
+                    });
+                }
+            });
     };
 })
 
-.controller('TournamentsCtrl', function($scope) {
-    $scope.playlists = [
-        { title: 'ISBT 1', id: 1 },
-        { title: 'ISBT 2', id: 2 },
-        { title: 'Tournament 3', id: 3 },
-        { title: 'Blabla', id: 4 },
-        { title: 'Asfd', id: 5 },
-        { title: 'Tourney', id: 6 }
-    ];
+.controller('TournamentsCtrl', function($scope, $localstorage, $http) {
+
+    var accessToken = $localstorage.getObject('oauth').access_token;
+    console.log("token = ", accessToken);
+
+
+    $http.get('http://192.168.50.4/app_dev.php/api/v2/mytournaments?access_token='+ accessToken).
+        success(function(data, status, headers, config) {
+            $scope.tournaments = data;
+        });
 })
 
 .controller('TournamentCtrl', function($scope, $stateParams) {
