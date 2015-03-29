@@ -1,10 +1,9 @@
-<ion-view view-title="Tournament info">
+<ion-view view-title="{{tournament.name}}">
     <ion-content class="padding">
         <div class="list card">
             <div class="item item-divider">Tournament info</div>
             <div class="item item-body">
-                <div>
-                    Blabla <b>sector 3</b>
+                <div ng-bind-html="tournament.pageHtml">
                 </div>
             </div>
         </div>

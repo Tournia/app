@@ -1,8 +1,6 @@
 angular.module('tournia.controllers', [])
 
 
-.controller('InfoCtrl', function($scope) {})
-
 .controller('MatchesCtrl', function($scope) {
     $scope.todos =  [
         {name: "Do the dishes"},
@@ -110,5 +108,16 @@ angular.module('tournia.controllers', [])
         });
 })
 
-.controller('TournamentCtrl', function($scope, $stateParams) {
+.controller('InfoCtrl', function($scope, $stateParams, $localstorage, $http, $ionicLoading) {
+    var accessToken = $localstorage.getObject('oauth').access_token;
+
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
+
+    $http.get('http://192.168.50.4/app_dev.php/api/v2/tournaments/'+ $stateParams.tournamentId +'?access_token='+ accessToken).
+        success(function(data, status, headers, config) {
+            $scope.tournament = data;
+            $ionicLoading.hide();
+        });
 });
