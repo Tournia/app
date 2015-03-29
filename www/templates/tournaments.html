@@ -1,9 +1,39 @@
 <ion-view view-title="Tournaments">
     <ion-content>
-        <ion-list>
-            <ion-item ng-repeat="tournament in tournaments" href="#/app/t/{{tournament.id}}/info">
-                {{tournament.name}}
-            </ion-item>
-        </ion-list>
+
+        <div class="bar item-input-inset">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios7-search placeholder-icon"></i>
+                <input type="search" placeholder="Search" ng-model="search">
+            </label>
+            <button class="button button-clear" ng-click="search = null">
+                Cancel
+            </button>
+        </div>
+        <div class="list">
+
+            <div class="item item-divider">
+                My Tournaments
+            </div>
+            <a class="item item-avatar item-icon-right" ng-repeat="tournament in mytournaments | filter:search" href="#/app/t/{{tournament.id}}/info">
+                <img src="img/default_tournament.jpg">
+                <h2>{{tournament.name}}</h2>
+                <p>{{ tournament.dateText}}</p>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+
+            <div class="item item-divider">
+                All Tournaments
+            </div>
+            <a class="item item-avatar item-icon-right" ng-repeat="tournament in alltournaments | filter:search" href="#/app/t/{{tournament.id}}/info">
+                <img src="img/default_tournament.jpg">
+                <h2>{{tournament.name}}</h2>
+                <p>{{ tournament.dateText}}</p>
+                <i class="icon ion-ios-arrow-right"></i>
+            </a>
+
+
+        </div>
     </ion-content>
 </ion-view>

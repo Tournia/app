@@ -98,12 +98,15 @@ angular.module('tournia.controllers', [])
 .controller('TournamentsCtrl', function($scope, $localstorage, $http) {
 
     var accessToken = $localstorage.getObject('oauth').access_token;
-    console.log("token = ", accessToken);
-
 
     $http.get('http://192.168.50.4/app_dev.php/api/v2/mytournaments?access_token='+ accessToken).
         success(function(data, status, headers, config) {
-            $scope.tournaments = data;
+            $scope.mytournaments = data;
+        });
+
+    $http.get('http://192.168.50.4/app_dev.php/api/v2/tournaments?access_token='+ accessToken).
+        success(function(data, status, headers, config) {
+            $scope.alltournaments = data;
         });
 })
 
