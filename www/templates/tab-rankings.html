@@ -1,16 +1,64 @@
 <ion-view view-title="Rankings">
     <ion-content>
-        <ion-list>
-            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/app/t/abc/rankings/{{chat.id}}">
-                <img ng-src="{{chat.face}}">
-                <h2>{{chat.name}}</h2>
-                <p>{{chat.lastText}}</p>
-                <i class="icon ion-chevron-right icon-accessory"></i>
+        <div id="rankings" class="content-tab active">
 
-                <ion-option-button class="button-assertive" ng-click="remove(chat)">
-                    Delete
-                </ion-option-button>
-            </ion-item>
-        </ion-list>
+            <!-- Loadingpane for first pageload -->
+            <div id="discipline-select" class="card">
+                <div class="current">
+                    <div class="discipline">
+                        <small class="muted">Discipline</small>Men Singles A
+                    </div>
+                    <div>
+                        <span class="caret muted pull-right caret-right"></span>
+                    </div>
+                </div>
+                <div class="list">
+                    <div>
+
+                        <div>
+                            Men Singles A
+                            <a class="themecolor" href="#rankings/211"><i class="glyphicon glyphicon-arrow-right pull-right"></i></a>
+                        </div>
+
+                        </div>
+                        <div>
+
+                        <div>
+                            Mixed Doubles C
+                            <a class="themecolor" href="#rankings/229"><i class="glyphicon glyphicon-arrow-right pull-right"></i></a>
+                        </div>
+
+                    </div>
+                <div>
+
+            </div>
+
+            <div class="table-wrapper">
+                <!-- Loadingpane for first pageload -->
+
+                <h2 class="table-title">
+                    Rankings
+                </h2>
+
+                <table id="ranking-table" class="table team-table"><tbody>
+                    <tr>
+                        <td class="discipline">
+                            # 1
+                        </td>
+                        <td class="team">
+                            <span class="player">Tim Schulte-Wissermann</span>
+                        </td>
+                        <td class="pointsRelative">
+                            <i class="glyphicon glyphicon-stats"></i> 1.000
+                        </td>
+                        <!--
+                            <td class="moreinfo">
+                                <a class="themecolor" href="#player/1135/ranking/211"><i class="glyphicon glyphicon-info-sign"></i></a>
+                            </td>
+                        -->
+                    </tr>
+                </tbody></table>
+            </div>
+        </div>
     </ion-content>
 </ion-view>
