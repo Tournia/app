@@ -64,14 +64,14 @@ angular.module('tournia.controllers', [])
     // Perform the login action when the user submits the login form
     $scope.doLogin = function() {
         self.postData = {
-            client_id: '7_28vnh8348eskogg8080kok80o04owg404s0kk8c8okok8ccs84',
-            client_secret: '5grrcukg2e0w8k8swog8k0k00g40kssgw0kk8cwccs4ko4kok4',
+            client_id: oAuthClientId,
+            client_secret: oAuthClientSecret,
             grant_type: 'password',
             username: $scope.loginData.username,
             password: $scope.loginData.password
         };
 
-        $http.post('http://192.168.50.4/app_dev.php/api/v2/oauth/token', postData).
+        $http.post(apiUrl +'/oauth/token', postData).
             success(function(data, status, headers, config) {
                 $localstorage.setObject('oauth', data);
                 $scope.closeLogin();
@@ -97,12 +97,12 @@ angular.module('tournia.controllers', [])
 
     var accessToken = $localstorage.getObject('oauth').access_token;
 
-    $http.get('http://192.168.50.4/app_dev.php/api/v2/mytournaments?access_token='+ accessToken).
+    $http.get(apiUrl +'/mytournaments').
         success(function(data, status, headers, config) {
             $scope.mytournaments = data;
         });
 
-    $http.get('http://192.168.50.4/app_dev.php/api/v2/tournaments?access_token='+ accessToken).
+    $http.get(apiUrl +'/tournaments').
         success(function(data, status, headers, config) {
             $scope.alltournaments = data;
         });
@@ -115,7 +115,7 @@ angular.module('tournia.controllers', [])
         template: 'Loading...'
     });
 
-    $http.get('http://192.168.50.4/app_dev.php/api/v2/tournaments/'+ $stateParams.tournamentId +'?access_token='+ accessToken).
+    $http.get(apiUrl +'/tournaments/'+ $stateParams.tournamentId +'?access_token='+ accessToken).
         success(function(data, status, headers, config) {
             $scope.tournament = data;
             $ionicLoading.hide();
