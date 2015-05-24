@@ -5,10 +5,46 @@
 // the 2nd parameter is an array of 'requires'
 // 'tournia.services' is found in services.js
 // 'tournia.controllers' is found in controllers.js
-angular.module('tournia', ['ionic', 'tournia.controllers', 'tournia.services'])
+angular.module('tournia', ['ionic', 'tournia.controllers', 'tournia.services', 'http-auth-interceptor'])
 
-.run(function($ionicPlatform) {
-    $ionicPlatform.ready(function() {
+.run(function($ionicPlatform, $rootScope, $injector, authService, $localstorage, $http) {
+    $rootScope.$on('event:auth-loginRequired', function(event, data){
+        // logged out -> check refresh token
+        $rootScope.isLoggedin = false;
+        if ($localstorage.getObject('oauth') != null) {
+            var postData = {
+                client_id: oAuthClientId,
+                client_secret: oAuthClientSecret,
+                grant_type: 'refresh_token',
+                refresh_token: $localstorage.getObject('oauth').refresh_token
+            };
+
+            $http.post(apiUrl +'/oauth/token', postData)
+                .success(function(data, status, headers, config) {
+                    $localstorage.setObject('oauth', data);
+
+                    // retry requests with new token
+                    authService.loginConfirmed('success', function(config){
+                        config.headers["Authorization"] = "Bearer "+ data.access_token;
+                        return config;
+                    })
+                })
+                .error(function(data, status, headers, config) {
+                    console.error('Error while refreshing oauth token');
+                    if (status == 400) {
+                        // Incorrect refresh token
+                        authService.loginCancelled();
+                        // TODO: open login window
+                    }
+                });
+        }
+    });
+    $rootScope.$on('event:auth-loginConfirmed', function(event, data){
+        $rootScope.isLoggedin = true;
+    });
+
+
+   $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -22,7 +58,6 @@ angular.module('tournia', ['ionic', 'tournia.controllers', 'tournia.services'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router
     // Set up the various states which the app can be in.

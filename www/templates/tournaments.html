@@ -11,17 +11,17 @@
             </button>
         </div>
         <div class="list">
-
-            <div class="item item-divider">
-                My Tournaments
+            <div ng-if="isLoggedin">
+                <div class="item item-divider">
+                    My Tournaments
+                </div>
+                <a class="item item-avatar item-icon-right" ng-repeat="tournament in mytournaments | filter:search" href="#/app/t/{{tournament.tournamentId}}/info">
+                    <img src="img/default_tournament.jpg">
+                    <h2>{{tournament.name}}</h2>
+                    <p>{{ tournament.dateText}}</p>
+                    <i class="icon ion-ios-arrow-right"></i>
+                </a>
             </div>
-            <a class="item item-avatar item-icon-right" ng-repeat="tournament in mytournaments | filter:search" href="#/app/t/{{tournament.tournamentId}}/info">
-                <img src="img/default_tournament.jpg">
-                <h2>{{tournament.name}}</h2>
-                <p>{{ tournament.dateText}}</p>
-                <i class="icon ion-ios-arrow-right"></i>
-            </a>
-
 
             <div class="item item-divider">
                 All Tournaments

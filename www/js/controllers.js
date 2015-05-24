@@ -38,7 +38,7 @@ angular.module('tournia.controllers', [])
     };
 })
 
-.controller('AppCtrl', function($scope, $ionicModal, $http, $ionicPopup, $localstorage) {
+.controller('AppCtrl', function($scope, $ionicModal, $http, $ionicPopup, $localstorage, authService, $rootScope) {
     // Form data for the login modal
     $scope.loginData = {};
 
@@ -57,8 +57,20 @@ angular.module('tournia.controllers', [])
     // Open the login modal
     $scope.login = function() {
         $scope.modal.show();
-        console.log($scope.loginData);
 //        $scope.loginData.username.trigger('focus');
+    };
+
+    // Open the logout alert
+    $scope.logout = function() {
+        var confirmPopup = $ionicPopup.confirm({
+            title: 'Logout',
+            template: 'Do you want to logout?'
+        }).then(function(res) {
+            if (res) {
+                $localstorage.setObject('oauth', null);
+                $rootScope.isLoggedin = false;
+            }
+        });
     };
 
     // Perform the login action when the user submits the login form
@@ -74,6 +86,13 @@ angular.module('tournia.controllers', [])
         $http.post(apiUrl +'/oauth/token', postData).
             success(function(data, status, headers, config) {
                 $localstorage.setObject('oauth', data);
+
+                // retry requests with new token
+                authService.loginConfirmed('success', function(config){
+                    config.headers["Authorization"] = "Bearer "+ data.access_token;
+                    return config;
+                })
+
                 $scope.closeLogin();
             }).
             error(function(data, status, headers, config) {
@@ -86,17 +105,13 @@ angular.module('tournia.controllers', [])
                         template: 'Your username / password combination is not correct'
                     }).then(function(res) {
                         $scope.loginData.password = '';
-
                     });
                 }
             });
     };
 })
 
-.controller('TournamentsCtrl', function($scope, $localstorage, $http) {
-
-    var accessToken = $localstorage.getObject('oauth').access_token;
-
+.controller('TournamentsCtrl', function($scope, $localstorage, $http, $rootScope) {
     $http.get(apiUrl +'/mytournaments').
         success(function(data, status, headers, config) {
             $scope.mytournaments = data;
@@ -109,13 +124,11 @@ angular.module('tournia.controllers', [])
 })
 
 .controller('InfoCtrl', function($scope, $stateParams, $localstorage, $http, $ionicLoading) {
-    var accessToken = $localstorage.getObject('oauth').access_token;
-
     $ionicLoading.show({
         template: 'Loading...'
     });
 
-    $http.get(apiUrl +'/tournaments/'+ $stateParams.tournamentId +'?access_token='+ accessToken).
+    $http.get(apiUrl +'/tournaments/'+ $stateParams.tournamentId).
         success(function(data, status, headers, config) {
             $scope.tournament = data;
             $ionicLoading.hide();

@@ -18,9 +18,13 @@
         </ion-header-bar>
         <ion-content>
             <ion-list>
-                <ion-item nav-clear menu-close ng-click="login()">
+                <ion-item nav-clear menu-close ng-click="login()" ng-if="!isLoggedin">
                     <i class="icon ion-unlocked"></i>
                     Login
+                </ion-item>
+                <ion-item nav-clear menu-close ng-click="logout()" ng-if="isLoggedin">
+                    <i class="icon ion-locked"></i>
+                    Logout
                 </ion-item>
                 <ion-item nav-clear menu-close href="#/app/tournaments">
                     <i class="icon ion-trophy"></i>
