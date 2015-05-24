@@ -11,7 +11,12 @@ var paths = {
   sass: ['./scss/**/*.scss']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['sass', 'fonts']);
+
+gulp.task('fonts', function () {
+    return gulp.src('./www/lib/bootstrap-sass/assets/fonts/**/*')
+        .pipe(gulp.dest('./www/fonts/'));
+});
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/*.scss')
@@ -26,7 +31,7 @@ gulp.task('sass', function(done) {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.sass, ['sass', 'fonts']);
 });
 
 gulp.task('install', ['git-check'], function() {
