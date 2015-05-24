@@ -26,10 +26,21 @@ angular.module('tournia.controllers', [])
     $scope.remove = function(chat) {
         Chats.remove(chat);
     }
+
+    $scope.disciplineSelector = false;
+    $scope.toggleDisciplineSelector = function() {
+        $scope.disciplineSelector = !$scope.disciplineSelector;
+    }
+
+    $scope.selectedDisciplineId = 0;
+    $scope.showRanking = function(disciplineId) {
+        $scope.selectedDisciplineId = disciplineId;
+    }
 })
 
 .controller('RankingDetailCtrl', function($scope, $stateParams, Chats) {
     $scope.chat = Chats.get($stateParams.chatId);
+
 })
 
 .controller('PlayersCtrl', function($scope) {

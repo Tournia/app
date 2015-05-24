@@ -1,43 +1,38 @@
 <ion-view view-title="Rankings">
     <ion-content>
+        <div class="container"><div class="col-md-12">
         <div id="rankings" class="content-tab active">
-
             <!-- Loadingpane for first pageload -->
-            <div id="discipline-select" class="card">
+            <div id="discipline-select" class="card" ng-class="disciplineSelector ? 'on-top' : ''" ng-click="toggleDisciplineSelector()">
                 <div class="current">
                     <div class="discipline">
                         <small class="muted">Discipline</small>Men Singles A
                     </div>
                     <div>
-                        <span class="caret muted pull-right caret-right"></span>
+                        <span class="caret muted pull-right" ng-class="disciplineSelector ? '' : 'caret-right'"></span>
                     </div>
                 </div>
-                <div class="list">
-                    <div>
-
+                <div class="list" ng-show="disciplineSelector">
+                    <div ng-click="showRanking(211)">
                         <div>
                             Men Singles A
-                            <a class="themecolor" href="#rankings/211"><i class="glyphicon glyphicon-arrow-right pull-right"></i></a>
+                            <a class="themecolor"><i class="glyphicon glyphicon-arrow-right pull-right"></i></a>
                         </div>
-
-                        </div>
-                        <div>
-
+                    </div>
+                    <div ng-click="showRanking(229)">
                         <div>
                             Mixed Doubles C
-                            <a class="themecolor" href="#rankings/229"><i class="glyphicon glyphicon-arrow-right pull-right"></i></a>
+                            <a class="themecolor"><i class="glyphicon glyphicon-arrow-right pull-right"></i></a>
                         </div>
-
                     </div>
-                <div>
-
+                </div>
             </div>
 
             <div class="table-wrapper">
                 <!-- Loadingpane for first pageload -->
 
                 <h2 class="table-title">
-                    Rankings
+                    Rankings {{selectedDisciplineId}}
                 </h2>
 
                 <table id="ranking-table" class="table team-table"><tbody>
@@ -60,5 +55,24 @@
                 </tbody></table>
             </div>
         </div>
+        </div></div>
     </ion-content>
 </ion-view>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        console.log("onready discipline");
+        // Show discipline select
+        $("#discipline-select").on("click", function() {
+            $(this).toggleClass('on-top');
+            $(this).find('.caret').toggleClass('caret-right');
+
+            $(this).find('.list').slideToggle();
+        });
+
+        // Go to discipline ranking
+        $(document).on('click','#discipline-select .list > div',function(){
+            window.location.hash = $(this).find('a').prop('hash');
+        });
+    })
+</script>
