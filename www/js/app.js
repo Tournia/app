@@ -103,7 +103,7 @@ angular.module('tournia', ['ionic', 'tournia.controllers', 'tournia.services', '
 
     // Each tournament has its own nav history stack:
     .state('app.tournament', {
-        url: "/t/:tournamentId",
+        url: "/t/:tournamentUrl",
         abstract: true,
         views: {
             'menuContent': {
@@ -144,7 +144,7 @@ angular.module('tournia', ['ionic', 'tournia.controllers', 'tournia.services', '
     })
 
     .state('app.tournament.ranking-detail', {
-        url: '/rankings/:chatId',
+        url: '/rankings/:disciplineId',
         views: {
             'tab-rankings': {
                 templateUrl: 'templates/ranking-detail.html',

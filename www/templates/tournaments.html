@@ -15,7 +15,7 @@
                 <div class="item item-divider">
                     My Tournaments
                 </div>
-                <a class="item item-avatar item-icon-right" ng-repeat="tournament in mytournaments | filter:search" href="#/app/t/{{tournament.tournamentId}}/info">
+                <a class="item item-avatar item-icon-right" ng-repeat="tournament in mytournaments | filter:search" href="#/app/t/{{tournament.url}}/info">
                     <img src="img/default_tournament.jpg">
                     <h2>{{tournament.name}}</h2>
                     <p>{{ tournament.dateText}}</p>
@@ -26,7 +26,7 @@
             <div class="item item-divider">
                 All Tournaments
             </div>
-            <a class="item item-avatar item-icon-right" ng-repeat="tournament in alltournaments | filter:search" href="#/app/t/{{tournament.tournamentId}}/info">
+            <a class="item item-avatar item-icon-right" ng-repeat="tournament in alltournaments | filter:search" href="#/app/t/{{tournament.url}}/info">
                 <img src="img/default_tournament.jpg">
                 <h2>{{tournament.name}}</h2>
                 <p>{{ tournament.dateText}}</p>

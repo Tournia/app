@@ -21,26 +21,28 @@ angular.module('tournia.controllers', [])
         })*/
 })
 
-.controller('RankingsCtrl', function($scope, Chats) {
-    $scope.chats = Chats.all();
-    $scope.remove = function(chat) {
-        Chats.remove(chat);
-    }
+.controller('RankingsCtrl', function($scope, Rankings, $ionicLoading) {
+    Rankings.getDisciplines().then(function(data){
+            $scope.disciplines = data;
+        });
 
     $scope.disciplineSelector = false;
     $scope.toggleDisciplineSelector = function() {
         $scope.disciplineSelector = !$scope.disciplineSelector;
     }
 
-    $scope.selectedDisciplineId = 0;
-    $scope.showRanking = function(disciplineId) {
-        $scope.selectedDisciplineId = disciplineId;
+    $scope.selectedDiscipline = "Select discipline";
+    $scope.showRanking = function(disciplineId, disciplineName) {
+        $ionicLoading.show({
+            templateUrl: 'templates/loadingPane.html'
+        });
+
+        $scope.selectedDiscipline = disciplineName;
+        Rankings.get(disciplineId).then(function(data){
+            $scope.ranking = data;
+            $ionicLoading.hide();
+        });
     }
-})
-
-.controller('RankingDetailCtrl', function($scope, $stateParams, Chats) {
-    $scope.chat = Chats.get($stateParams.chatId);
-
 })
 
 .controller('PlayersCtrl', function($scope) {
@@ -134,12 +136,14 @@ angular.module('tournia.controllers', [])
         });
 })
 
-.controller('InfoCtrl', function($scope, $stateParams, $localstorage, $http, $ionicLoading) {
+.controller('InfoCtrl', function($scope, $stateParams, $localstorage, $http, $ionicLoading, $rootScope) {
     $ionicLoading.show({
-        template: 'Loading...'
+        templateUrl: 'templates/loadingPane.html'
     });
 
-    $http.get(apiUrl +'/tournaments/'+ $stateParams.tournamentId).
+    $rootScope.tournamentUrl = $stateParams.tournamentUrl;
+
+    $http.get(apiUrl +'/'+ $stateParams.tournamentUrl +'/tournament').
         success(function(data, status, headers, config) {
             $scope.tournament = data;
             $ionicLoading.hide();
