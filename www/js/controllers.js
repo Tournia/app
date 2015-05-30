@@ -1,27 +1,56 @@
 angular.module('tournia.controllers', [])
 
 
-.controller('MatchesCtrl', function($scope) {
-    $scope.todos =  [
-        {name: "Do the dishes"},
-        {name: "Take out the trash"}
-    ]
+.controller('MatchesCtrl', function($scope, Matches) {
     $scope.doRefresh = function() {
-        $scope.todos.unshift({name: 'Incoming todo ' + Date.now()})
-        $scope.$broadcast('scroll.refreshComplete');
-        $scope.$apply()
+        $scope.setView($scope.view);
     };
-        /*
-    $http.get('/my_resource')
-        .success(function(data) {
-            $scope.resource = data.resource
-        })
-        .finally(function() {
-            $scope.$broadcast('scroll.refreshComplete')
-        })*/
+
+    $scope.isLoading = true;
+    $scope.view = 'current';
+
+    $scope.setView = function(view) {
+        $scope.view = view;
+        $scope.isLoading = true;
+        //$scope.page = 0;
+
+        if (view == "upcoming") {
+            Matches.getUpcoming().then(function(data){
+                $scope.upcomingMatches = data;
+                $scope.isLoading = false;
+            });
+        } else if (view == "current") {
+            Matches.getCurrent().then(function(data){
+                $scope.currentMatches = data;
+                $scope.isLoading = false;
+            });
+        } else if (view == "finished") {
+            Matches.getFinished($scope.page).then(function(data){
+                if ($scope.page > 0) {
+                    // append data
+                    console.log($scope.finishedMatches);
+                    //$scope.finishedMatches.push($scope.finishedMatches, data);
+                    $scope.finishedMatches = mergeObjectLiterals($scope.finishedMatches, data)
+                    console.log($scope.finishedMatches);
+                } else {
+                    $scope.finishedMatches = data;
+                    console.log($scope.finishedMatches);
+                }
+                $scope.isLoading = false;
+            });
+        }
+        $scope.$broadcast('scroll.refreshComplete');
+    }
+        $scope.page = 0;
+    $scope.setView($scope.view);
+
+    $scope.loadMoreFinishedMatches = function() {
+        $scope.page += 1;
+        $scope.setView($scope.view);
+    }
 })
 
-.controller('RankingsCtrl', function($scope, Rankings, $ionicLoading) {
+.controller('RankingsCtrl', function($scope, Rankings) {
     Rankings.getDisciplines().then(function(data){
             $scope.disciplines = data;
         });
@@ -33,14 +62,12 @@ angular.module('tournia.controllers', [])
 
     $scope.selectedDiscipline = "Select discipline";
     $scope.showRanking = function(disciplineId, disciplineName) {
-        $ionicLoading.show({
-            templateUrl: 'templates/loadingPane.html'
-        });
+        $scope.isLoading = true;
 
         $scope.selectedDiscipline = disciplineName;
         Rankings.get(disciplineId).then(function(data){
             $scope.ranking = data;
-            $ionicLoading.hide();
+            $scope.isLoading = false;
         });
     }
 })
@@ -136,16 +163,29 @@ angular.module('tournia.controllers', [])
         });
 })
 
-.controller('InfoCtrl', function($scope, $stateParams, $localstorage, $http, $ionicLoading, $rootScope) {
+.controller('InfoCtrl', function($scope, $stateParams, $localstorage, $http, $ionicLoading) {
     $ionicLoading.show({
         templateUrl: 'templates/loadingPane.html'
     });
-
-    $rootScope.tournamentUrl = $stateParams.tournamentUrl;
 
     $http.get(apiUrl +'/'+ $stateParams.tournamentUrl +'/tournament').
         success(function(data, status, headers, config) {
             $scope.tournament = data;
             $ionicLoading.hide();
         });
+})
+
+.controller('TabsController', function($scope, $stateParams) {
+    $scope.tournamentUrl = $stateParams.tournamentUrl;
 });
+
+// merge two object literals
+// keys in earlier args override keys in later args.
+// someMergingFunction({foo:"bar"}, {foo:"baz"})
+//  ==> {foo:"bar"}
+function mergeObjectLiterals (lit1, lit2) {
+    for (var key in lit2) {
+        lit1[key] = lit2[key];
+    }
+    return lit1;
+}

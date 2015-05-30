@@ -23,11 +23,11 @@
             </div>
 
             <div class="table-wrapper">
-                <!-- Loadingpane for first pageload -->
-
                 <h2 class="table-title">
                     Rankings - {{ selectedDiscipline }}
                 </h2>
+
+                <div ng-include="'templates/loadingPane.html'" ng-if="isLoading"></div>
 
                 <table id="ranking-table" class="table team-table"><tbody>
                     <tr ng-repeat="rankingRow in ranking">

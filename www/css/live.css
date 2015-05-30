@@ -56,6 +56,11 @@ a.themecolor,
 a.themecolor:link {
   color: #6bb50b;
 }
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: inherit;
+}
 /* ==========================================================================
    1 Bootstrap overrides
    ========================================================================== */
@@ -238,6 +243,7 @@ a.themecolor:link {
   border-radius: 0;
   padding: 6px 15px;
   margin-bottom: 0;
+  cursor: pointer;
 }
 #nav-select li.active a {
   color: #f3f2f0;
