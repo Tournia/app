@@ -10,21 +10,30 @@
             <li class="item item-toggle">
                 Receive notifications
                 <label class="toggle toggle-balanced">
-                    <input type="checkbox" ng-model="settings.enableNotifications">
+                    <input type="checkbox" ng-model="settings.notificationsEnabled">
                     <div class="track">
                         <div class="handle"></div>
                     </div>
                 </label>
             </li>
 
-            <li class="item item-divider" ng-if="settings.enableNotifications">
+            <li class="item item-divider" ng-if="settings.notificationsEnabled">
                 Matches notifications
             </li>
 
-            <li class="item range" ng-if="settings.enableNotifications">
-                Next match
-                <input type="range" min="0" max="5" value="3" ng-model="settings.notificationNextMatch">
-                {{settings.notificationNextMatch}} matches before
+            <li class="item item-input item-select" ng-if="settings.notificationsEnabled">
+                <div class="input-label">
+                    Next match
+                </div>
+                <select ng-model="settings.notificationsNextMatch">
+                    <option>Never</option>
+                    <option selected>5 matches before</option>
+                    <option>4 matches before</option>
+                    <option>3 matches before</option>
+                    <option>2 matches before</option>
+                    <option>1 matches before</option>
+                    <option>0 matches before</option>
+                </select>
             </li>
 
 

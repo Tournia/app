@@ -23,7 +23,8 @@ angular.module('tournia.controllers', [])
         } else if ($scope.view == "finished") {
             Matches.getFinished($scope.page).then(function(data){
                 if ($scope.page > 0) {
-                    $scope.finishedMatches = mergeObjectLiterals($scope.finishedMatches, data)
+                    $scope.finishedMatches = angular.extend($scope.finishedMatches, data);
+
                 } else {
                     $scope.finishedMatches = data;
                 }
@@ -193,14 +194,3 @@ angular.module('tournia.controllers', [])
 .controller('TabsController', function($scope, $stateParams) {
     $scope.tournamentUrl = $stateParams.tournamentUrl;
 });
-
-// merge two object literals
-// keys in earlier args override keys in later args.
-// someMergingFunction({foo:"bar"}, {foo:"baz"})
-//  ==> {foo:"bar"}
-function mergeObjectLiterals (lit1, lit2) {
-    for (var key in lit2) {
-        lit1[key] = lit2[key];
-    }
-    return lit1;
-}
