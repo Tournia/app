@@ -41,7 +41,7 @@ angular.module('tournia.controllers', [])
         }
         $scope.$broadcast('scroll.refreshComplete');
     }
-        $scope.page = 0;
+    $scope.page = 0;
     $scope.setView($scope.view);
 
     $scope.loadMoreFinishedMatches = function() {
@@ -72,10 +72,16 @@ angular.module('tournia.controllers', [])
     }
 })
 
-.controller('PlayersCtrl', function($scope) {
-    $scope.settings = {
-        enableFriends: true
-    };
+.controller('PlayersCtrl', function($scope, Matches) {
+    $scope.searchPlayer = function(searchText) {
+        if ((searchText == null) || (searchText == '')) {
+            $scope.searchMatches = {};
+        } else {
+            Matches.searchPlayer(searchText).then(function(data){
+                $scope.searchMatches = data;
+            });
+        }
+    }
 })
 
 .controller('AppCtrl', function($scope, $ionicModal, $http, $ionicPopup, $localstorage, authService, $rootScope) {

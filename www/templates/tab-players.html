@@ -1,5 +1,41 @@
 <ion-view view-title="Players">
     <ion-content>
-        <h1>Players</h1>
+        <div class="container"><div class="col-md-12">
+
+        <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper">
+                <i class="icon ion-ios-search placeholder-icon"></i>
+                <input type="search" placeholder="Search" ng-model="searchText" ng-change="searchPlayer(searchText)">
+            </label>
+            <button class="button button-clear" ng-click="searchText = null; searchPlayer(null)">
+                Cancel
+            </button>
+        </div>
+
+        <h2 class="table-title">Search: {{ searchText }}</h2>
+
+        <table id="upcoming-matches-table" class="table team-table">
+            <tbody>
+            <tr ng-repeat="match in searchMatches">
+                <td class="discipline">
+                    {{ match.discipline }}
+                </td>
+                <td class="localId">
+                    {{ match.localId }}
+                </td>
+                <td class="team team1 text-right">
+                    <span class="player">{{match.team1}}</span>
+                </td>
+                <td class="team team2">
+                    <span class="player">{{match.team2}}</span>
+                </td>
+                <td class="score">
+                    <span class="set-score">{{ match.score }}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        </div></div>
     </ion-content>
 </ion-view>

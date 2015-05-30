@@ -13,7 +13,7 @@
 
         <!-- Tab panes -->
         <div class="tab-content">
-            <div class="tab-pane active" id="upcoming-matches" ng-if="view=='upcoming'">
+            <div class="tab-pane" id="upcoming-matches" ng-class="view=='upcoming' ? 'active' : ''">
                 <h2 class="table-title">
                     Upcoming matches
                 </h2>
@@ -38,7 +38,7 @@
                 </table>
             </div>
 
-            <div class="tab-pane active" id="current-matches" ng-if="view=='current'">
+            <div class="tab-pane" id="current-matches" ng-class="view=='current' ? 'active' : ''">
                 <h2 class="table-title">
                     Current matches
                 </h2>
@@ -66,7 +66,7 @@
                 </table>
             </div>
 
-            <div class="tab-pane active" id="finished-matches" ng-if="view=='finished'">
+            <div class="tab-pane" id="finished-matches" ng-class="view=='finished' ? 'active' : ''">
                 <h2 class="table-title">
                     Finished matches
                 </h2>

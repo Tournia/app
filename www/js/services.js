@@ -61,6 +61,15 @@ angular.module('tournia.services', [])
                     deferred.reject("An error occurred while fetching items");
                 });
                 return deferred.promise;
+            },
+            searchPlayer: function(searchText) {
+                var deferred = $q.defer();
+                $http.post(apiUrl +'/'+ $stateParams.tournamentUrl +'/matches/listsearch', {searchQuery:searchText}).success(function(data){
+                    deferred.resolve(data);
+                }).error(function(){
+                    deferred.reject("An error occurred while fetching items");
+                });
+                return deferred.promise;
             }
         };
     })
