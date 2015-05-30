@@ -3,51 +3,52 @@ angular.module('tournia.controllers', [])
 
 .controller('MatchesCtrl', function($scope, Matches) {
     $scope.doRefresh = function() {
-        $scope.setView($scope.view);
+        self.updateView();
     };
 
-    $scope.isLoading = true;
-    $scope.view = 'current';
-
-    $scope.setView = function(view) {
-        $scope.view = view;
+    self.updateView = function() {
         $scope.isLoading = true;
-        //$scope.page = 0;
-
-        if (view == "upcoming") {
+        if ($scope.view == "upcoming") {
             Matches.getUpcoming().then(function(data){
                 $scope.upcomingMatches = data;
                 $scope.isLoading = false;
+                $scope.$broadcast('scroll.refreshComplete');
             });
-        } else if (view == "current") {
+        } else if ($scope.view == "current") {
             Matches.getCurrent().then(function(data){
                 $scope.currentMatches = data;
                 $scope.isLoading = false;
+                $scope.$broadcast('scroll.refreshComplete');
             });
-        } else if (view == "finished") {
+        } else if ($scope.view == "finished") {
             Matches.getFinished($scope.page).then(function(data){
                 if ($scope.page > 0) {
-                    // append data
-                    console.log($scope.finishedMatches);
-                    //$scope.finishedMatches.push($scope.finishedMatches, data);
                     $scope.finishedMatches = mergeObjectLiterals($scope.finishedMatches, data)
-                    console.log($scope.finishedMatches);
                 } else {
                     $scope.finishedMatches = data;
-                    console.log($scope.finishedMatches);
                 }
                 $scope.isLoading = false;
+                $scope.$broadcast('scroll.refreshComplete');
             });
         }
-        $scope.$broadcast('scroll.refreshComplete');
     }
-    $scope.page = 0;
+
+    $scope.setView = function(view) {
+        $scope.view = view;
+        $scope.page = 0;
+        self.updateView();
+    }
+
+    // initial load
+    $scope.view = 'current';
     $scope.setView($scope.view);
 
     $scope.loadMoreFinishedMatches = function() {
         $scope.page += 1;
-        $scope.setView($scope.view);
+        self.updateView();
     }
+
+
 })
 
 .controller('RankingsCtrl', function($scope, Rankings) {
@@ -55,21 +56,27 @@ angular.module('tournia.controllers', [])
             $scope.disciplines = data;
         });
 
-    $scope.disciplineSelector = false;
-    $scope.toggleDisciplineSelector = function() {
-        $scope.disciplineSelector = !$scope.disciplineSelector;
-    }
-
+    var selectedDisciplineId = 0;
     $scope.selectedDiscipline = "Select discipline";
     $scope.showRanking = function(disciplineId, disciplineName) {
         $scope.isLoading = true;
+        selectedDisciplineId = disciplineId;
 
         $scope.selectedDiscipline = disciplineName;
         Rankings.get(disciplineId).then(function(data){
             $scope.ranking = data;
             $scope.isLoading = false;
+            $scope.$broadcast('scroll.refreshComplete');
         });
     }
+
+    $scope.doRefresh = function() {
+        if (selectedDisciplineId != 0) {
+            $scope.showRanking(selectedDisciplineId, $scope.selectedDiscipline);
+        } else {
+            $scope.$broadcast('scroll.refreshComplete');
+        }
+    };
 })
 
 .controller('PlayersCtrl', function($scope, Matches) {
@@ -77,8 +84,10 @@ angular.module('tournia.controllers', [])
         if ((searchText == null) || (searchText == '')) {
             $scope.searchMatches = {};
         } else {
+            $scope.isLoading = true;
             Matches.searchPlayer(searchText).then(function(data){
                 $scope.searchMatches = data;
+                $scope.isLoading = false;
             });
         }
     }

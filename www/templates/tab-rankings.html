@@ -1,9 +1,11 @@
 <ion-view view-title="Rankings">
     <ion-content>
+        <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+        </ion-refresher>
         <div class="container"><div class="col-md-12">
         <div id="rankings" class="content-tab active">
             <!-- Loadingpane for first pageload -->
-            <div id="discipline-select" class="card" ng-class="disciplineSelector ? 'on-top' : ''" ng-click="toggleDisciplineSelector()">
+            <div id="discipline-select" class="card" ng-class="disciplineSelector ? 'on-top' : ''" ng-click="disciplineSelector = !disciplineSelector" ng-model="disciplineSelector">
                 <div class="current">
                     <div class="discipline">
                         <small class="muted">Discipline</small>{{ selectedDiscipline }}

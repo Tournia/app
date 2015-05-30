@@ -1,25 +1,18 @@
 <ion-view view-title="{{tournament.name}}">
     <ion-content class="padding">
         <div class="list card">
-            <div class="item item-divider">Tournament info</div>
-            <div class="item item-body">
-                <div ng-bind-html="tournament.pageHtml">
-                </div>
-            </div>
-        </div>
-        <div class="list card">
             <div class="item item-divider">Info</div>
             <div class="item item-body">
                 <div>
-                    Regsitration is open!
+                    <h2>{{ tournament.name }}</h2>
+                    <h3>{{ tournament.dateText }}</h3>
                 </div>
             </div>
         </div>
         <div class="list card">
-            <div class="item item-divider">Upcoming</div>
+            <div class="item item-divider">Website</div>
             <div class="item item-body">
-                <div>
-                    You have <b>29</b> meetings on your calendar tomorrow.
+                <div ng-bind-html="tournament.pageHtml">
                 </div>
             </div>
         </div>
