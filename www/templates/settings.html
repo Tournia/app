@@ -1,9 +1,35 @@
 <ion-view view-title="Settings">
-    <ion-content class="padding scroll-bg">
-        <ion-list>
-            <ion-toggle ng-model="settings.enableFriends">
-                Enable Notifications
-            </ion-toggle>
-        </ion-list>
+    <ion-content class="padding">
+
+        <ul class="list">
+
+            <li class="item item-divider">
+                Notifications
+            </li>
+
+            <li class="item item-toggle">
+                Receive notifications
+                <label class="toggle toggle-balanced">
+                    <input type="checkbox" ng-model="settings.enableNotifications">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </li>
+
+            <li class="item item-divider" ng-if="settings.enableNotifications">
+                Matches notifications
+            </li>
+
+            <li class="item range" ng-if="settings.enableNotifications">
+                Next match
+                <input type="range" min="0" max="5" value="3" ng-model="settings.notificationNextMatch">
+                {{settings.notificationNextMatch}} matches before
+            </li>
+
+
+
+        </ul>
+
     </ion-content>
 </ion-view>

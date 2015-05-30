@@ -14,10 +14,13 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+/*
+$big-bg:      'http://ioniconf.com/img/bg.jpg';
 .scroll-bg {
-  background: url('http://ioniconf.com/img/bg.jpg') no-repeat center center fixed;
-  background-size: cover; }
-
+    background: url($big-bg) no-repeat center center fixed;
+    background-size: cover;
+}
+*/
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

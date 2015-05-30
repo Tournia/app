@@ -21,11 +21,13 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // SASS overrides
 $positive: #6bb50b !default;
 
+/*
 $big-bg:      'http://ioniconf.com/img/bg.jpg';
 .scroll-bg {
     background: url($big-bg) no-repeat center center fixed;
     background-size: cover;
 }
+*/
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
