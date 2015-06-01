@@ -74,6 +74,60 @@ angular.module('tournia.services', [])
         };
     })
 
+    .factory('Settings', function($http, $stateParams, $q, $ionicPush, $localstorage) {
+
+        return {
+            setNotificationsEnabled: function(enabled) {
+                var deferred = $q.defer();
+                this.getDeviceToken().then(function(deviceToken){
+                    $http.post(apiUrl +'/notifications/enabled', {platform:'ios', token: deviceToken}).success(function(data){
+                        deferred.resolve(data);
+                    }).error(function(){
+                        deferred.reject("An error occurred while fetching items");
+                    });
+                });
+                return deferred.promise;
+            },
+
+            setNotificationsNextMatch: function(period) {
+                var deferred = $q.defer();
+                $http.post(apiUrl +'/notifications/nextmatch', {platform:'ios', token: deviceToken, period: period}).success(function(data){
+                    deferred.resolve(data);
+                }).error(function(){
+                    deferred.reject("An error occurred while fetching items");
+                });
+                return deferred.promise;
+            },
+
+            getDeviceToken: function() {
+                var deferred = $q.defer();
+
+                if ($localstorage.get('deviceToken') != null) {
+                    deferred.resolve($localstorage.get('deviceToken'));
+                } else {
+                    // Register with the Ionic Push service.  All parameters are optional.
+                    $ionicPush.register({
+                        canShowAlert: true, //Can pushes show an alert on your screen?
+                        canSetBadge: true, //Can pushes update app icon badges?
+                        canPlaySound: true, //Can notifications play a sound?
+                        canRunActionsOnWake: true, //Can run actions outside the app,
+                        onNotification: function(notification) {
+                            // Handle new push notifications here
+                            // console.log(notification);
+                            $scope.lastNotification = JSON.stringify(notification);
+                            return true;
+                        }
+                    }).then(function(deviceToken) {
+                        deferred.resolve(deviceToken);
+                        $localstorage.set('deviceToken', deviceToken)
+                    });
+                }
+
+                return deferred.promise;
+            }
+        };
+    })
+
 .factory('$localstorage', ['$window', function($window) {
     return {
         set: function(key, value) {

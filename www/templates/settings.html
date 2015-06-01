@@ -1,7 +1,18 @@
 <ion-view view-title="Settings">
     <ion-content class="padding">
 
-        <ul class="list">
+        <div ng-if="!isLoggedin" class="list card">
+            <div class="item item-divider">Log in</div>
+            <div class="item item-body">
+                <div>
+                    <h2>You need to login first. After logging in, you can set-up notifications.</h2>
+                    <button class="button button-block button-positive" ng-click="login()">
+                        Log in
+                    </button>
+                </div>
+            </div>
+        </div>
+        <ul class="list" ng-if="isLoggedin">
 
             <li class="item item-divider">
                 Notifications
@@ -10,7 +21,7 @@
             <li class="item item-toggle">
                 Receive notifications
                 <label class="toggle toggle-balanced">
-                    <input type="checkbox" ng-model="settings.notificationsEnabled">
+                    <input type="checkbox" ng-model="settings.notificationsEnabled" ng-change="setNotificationsEnabled(settings.notificationsEnabled)">
                     <div class="track">
                         <div class="handle"></div>
                     </div>
@@ -23,16 +34,16 @@
 
             <li class="item item-input item-select" ng-if="settings.notificationsEnabled">
                 <div class="input-label">
-                    Next match
+                    About next match
                 </div>
-                <select ng-model="settings.notificationsNextMatch">
-                    <option>Never</option>
-                    <option selected>5 matches before</option>
-                    <option>4 matches before</option>
-                    <option>3 matches before</option>
-                    <option>2 matches before</option>
-                    <option>1 matches before</option>
-                    <option>0 matches before</option>
+                <select ng-model="notificationsNextMatch" ng-change="setNotificationsNextMatch(notificationsNextMatch)">
+                    <option ng-selected="notificationsNextMatch == -1">Never</option>
+                    <option ng-selected="notificationsNextMatch == 5">5 matches before</option>
+                    <option ng-selected="notificationsNextMatch == 4">4 matches before</option>
+                    <option ng-selected="notificationsNextMatch == 3">3 matches before</option>
+                    <option ng-selected="notificationsNextMatch == 2">2 matches before</option>
+                    <option ng-selected="notificationsNextMatch == 1">1 matches before</option>
+                    <option ng-selected="notificationsNextMatch == 0">0 matches before</option>
                 </select>
             </li>
 

@@ -3,13 +3,11 @@
 1 verbose cli   '/usr/local/bin/npm',
 1 verbose cli   'install',
 1 verbose cli   '-g',
-1 verbose cli   'ionic',
-1 verbose cli   'to',
-1 verbose cli   'update' ]
+1 verbose cli   'ionic@1.4.5alpha.6' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.35
-4 verbose cache add [ 'ionic', null ]
-5 verbose cache add name=undefined spec="ionic" args=["ionic",null]
+4 verbose cache add [ 'ionic@1.4.5alpha.6', null ]
+5 verbose cache add name=undefined spec="ionic@1.4.5alpha.6" args=["ionic@1.4.5alpha.6",null]
 6 verbose parsed url { protocol: null,
 6 verbose parsed url   slashes: null,
 6 verbose parsed url   auth: null,
@@ -19,635 +17,62 @@
 6 verbose parsed url   hash: null,
 6 verbose parsed url   search: null,
 6 verbose parsed url   query: null,
-6 verbose parsed url   pathname: 'ionic',
-6 verbose parsed url   path: 'ionic',
-6 verbose parsed url   href: 'ionic' }
-7 verbose cache add [ 'to', null ]
-8 verbose cache add name=undefined spec="to" args=["to",null]
-9 verbose parsed url { protocol: null,
-9 verbose parsed url   slashes: null,
-9 verbose parsed url   auth: null,
-9 verbose parsed url   host: null,
-9 verbose parsed url   port: null,
-9 verbose parsed url   hostname: null,
-9 verbose parsed url   hash: null,
-9 verbose parsed url   search: null,
-9 verbose parsed url   query: null,
-9 verbose parsed url   pathname: 'to',
-9 verbose parsed url   path: 'to',
-9 verbose parsed url   href: 'to' }
-10 verbose cache add [ 'update', null ]
-11 verbose cache add name=undefined spec="update" args=["update",null]
-12 verbose parsed url { protocol: null,
-12 verbose parsed url   slashes: null,
-12 verbose parsed url   auth: null,
-12 verbose parsed url   host: null,
-12 verbose parsed url   port: null,
-12 verbose parsed url   hostname: null,
-12 verbose parsed url   hash: null,
-12 verbose parsed url   search: null,
-12 verbose parsed url   query: null,
-12 verbose parsed url   pathname: 'update',
-12 verbose parsed url   path: 'update',
-12 verbose parsed url   href: 'update' }
-13 silly lockFile 00d10074-ionic ionic
-14 verbose lock ionic /Users/sjoerdsmink/.npm/00d10074-ionic.lock
-15 silly lockFile 4374aaee-to to
-16 verbose lock to /Users/sjoerdsmink/.npm/4374aaee-to.lock
-17 silly lockFile 0a25ba59-update update
-18 verbose lock update /Users/sjoerdsmink/.npm/0a25ba59-update.lock
-19 silly lockFile 4374aaee-to to
-20 silly lockFile 4374aaee-to to
-21 silly lockFile 00d10074-ionic ionic
-22 silly lockFile 00d10074-ionic ionic
-23 verbose addNamed [ 'to', '' ]
-24 verbose addNamed [ null, '*' ]
-25 silly lockFile d4731923-to to@
-26 verbose lock to@ /Users/sjoerdsmink/.npm/d4731923-to.lock
-27 silly lockFile 0a25ba59-update update
-28 silly lockFile 0a25ba59-update update
-29 verbose addNamed [ 'ionic', '' ]
-30 verbose addNamed [ null, '*' ]
-31 silly lockFile 966fc04a-ionic ionic@
-32 verbose lock ionic@ /Users/sjoerdsmink/.npm/966fc04a-ionic.lock
-33 verbose addNamed [ 'update', '' ]
-34 verbose addNamed [ null, '*' ]
-35 silly lockFile f8258749-update update@
-36 verbose lock update@ /Users/sjoerdsmink/.npm/f8258749-update.lock
-37 silly addNameRange { name: 'to', range: '*', hasData: false }
-38 silly addNameRange { name: 'ionic', range: '*', hasData: false }
-39 silly addNameRange { name: 'update', range: '*', hasData: false }
-40 verbose request where is /to
-41 verbose request registry https://registry.npmjs.org/
-42 verbose request id 89f63b2426165b93
-43 verbose url raw /to
-44 verbose url resolving [ 'https://registry.npmjs.org/', './to' ]
-45 verbose url resolved https://registry.npmjs.org/to
-46 verbose request where is https://registry.npmjs.org/to
-47 info trying registry request attempt 1 at 11:34:46
-48 http GET https://registry.npmjs.org/to
-49 verbose request where is /update
-50 verbose request registry https://registry.npmjs.org/
-51 verbose url raw /update
-52 verbose url resolving [ 'https://registry.npmjs.org/', './update' ]
-53 verbose url resolved https://registry.npmjs.org/update
-54 verbose request where is https://registry.npmjs.org/update
-55 info trying registry request attempt 1 at 11:34:46
-56 http GET https://registry.npmjs.org/update
-57 verbose request where is /ionic
-58 verbose request registry https://registry.npmjs.org/
-59 verbose url raw /ionic
-60 verbose url resolving [ 'https://registry.npmjs.org/', './ionic' ]
-61 verbose url resolved https://registry.npmjs.org/ionic
-62 verbose request where is https://registry.npmjs.org/ionic
-63 info trying registry request attempt 1 at 11:34:47
-64 verbose etag "6DBRTHDHZ3X4S1ZO6WZGLVU9Y"
-65 http GET https://registry.npmjs.org/ionic
-66 http 200 https://registry.npmjs.org/ionic
-67 silly registry.get cb [ 200,
-67 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-67 silly registry.get     etag: '"95IYCZVBX032NQI1TP8RY7S1D"',
-67 silly registry.get     'content-type': 'application/json',
-67 silly registry.get     'cache-control': 'max-age=60',
-67 silly registry.get     'content-length': '392457',
-67 silly registry.get     'accept-ranges': 'bytes',
-67 silly registry.get     date: 'Sun, 24 May 2015 09:34:47 GMT',
-67 silly registry.get     via: '1.1 varnish',
-67 silly registry.get     age: '43',
-67 silly registry.get     connection: 'keep-alive',
-67 silly registry.get     'x-served-by': 'cache-ams4139-AMS',
-67 silly registry.get     'x-cache': 'HIT',
-67 silly registry.get     'x-cache-hits': '1',
-67 silly registry.get     'x-timer': 'S1432460087.087921,VS0,VE1',
-67 silly registry.get     vary: 'Accept' } ]
-68 silly addNameRange number 2 { name: 'ionic', range: '*', hasData: true }
-69 silly addNameRange versions [ 'ionic',
-69 silly addNameRange   [ '0.9.6',
-69 silly addNameRange     '0.9.8',
-69 silly addNameRange     '0.9.9',
-69 silly addNameRange     '0.9.10',
-69 silly addNameRange     '0.9.11',
-69 silly addNameRange     '0.9.12',
-69 silly addNameRange     '0.9.13',
-69 silly addNameRange     '0.9.14',
-69 silly addNameRange     '0.9.15',
-69 silly addNameRange     '0.9.16',
-69 silly addNameRange     '1.0.0-beta.1',
-69 silly addNameRange     '1.0.0-beta',
-69 silly addNameRange     '1.0.1-beta',
-69 silly addNameRange     '1.0.3-beta',
-69 silly addNameRange     '1.0.4',
-69 silly addNameRange     '1.0.5',
-69 silly addNameRange     '1.0.6',
-69 silly addNameRange     '1.0.7',
-69 silly addNameRange     '1.0.8',
-69 silly addNameRange     '1.0.9',
-69 silly addNameRange     '1.0.10',
-69 silly addNameRange     '1.0.11',
-69 silly addNameRange     '1.0.12',
-69 silly addNameRange     '1.0.13',
-69 silly addNameRange     '1.0.14',
-69 silly addNameRange     '1.0.15',
-69 silly addNameRange     '1.0.16',
-69 silly addNameRange     '1.0.17',
-69 silly addNameRange     '1.1.0-beta1',
-69 silly addNameRange     '1.1.0-beta2',
-69 silly addNameRange     '1.1.0-beta3',
-69 silly addNameRange     '1.1.0-beta4',
-69 silly addNameRange     '1.1.0-beta5',
-69 silly addNameRange     '1.1.0-beta6',
-69 silly addNameRange     '1.1.0',
-69 silly addNameRange     '1.1.1-beta1',
-69 silly addNameRange     '1.1.1-beta2',
-69 silly addNameRange     '1.1.1-beta3',
-69 silly addNameRange     '1.1.1',
-69 silly addNameRange     '1.1.3',
-69 silly addNameRange     '1.1.4',
-69 silly addNameRange     '1.1.5-beta1',
-69 silly addNameRange     '1.1.5-beta2',
-69 silly addNameRange     '1.1.5-beta3',
-69 silly addNameRange     '1.1.5-beta4',
-69 silly addNameRange     '1.1.5-beta5',
-69 silly addNameRange     '1.1.5',
-69 silly addNameRange     '1.1.6',
-69 silly addNameRange     '1.1.7-beta1',
-69 silly addNameRange     '1.1.7',
-69 silly addNameRange     '1.1.8-beta1',
-69 silly addNameRange     '1.1.8-beta2',
-69 silly addNameRange     '1.1.8-beta3',
-69 silly addNameRange     '1.1.8-beta4',
-69 silly addNameRange     '1.1.8-beta5',
-69 silly addNameRange     '1.1.8',
-69 silly addNameRange     '1.1.9-beta1',
-69 silly addNameRange     '1.1.9',
-69 silly addNameRange     '1.1.10',
-69 silly addNameRange     '1.1.11-beta1',
-69 silly addNameRange     '1.1.11-beta2',
-69 silly addNameRange     '1.1.11',
-69 silly addNameRange     '1.1.12-beta1',
-69 silly addNameRange     '1.1.12-beta2',
-69 silly addNameRange     '1.1.12-beta3',
-69 silly addNameRange     '1.1.12',
-69 silly addNameRange     '1.1.13',
-69 silly addNameRange     '1.1.14-beta1',
-69 silly addNameRange     '1.1.14-beta2',
-69 silly addNameRange     '1.1.14-beta3',
-69 silly addNameRange     '1.2.0-beta1',
-69 silly addNameRange     '1.2.0',
-69 silly addNameRange     '1.2.1-beta1',
-69 silly addNameRange     '1.2.1-beta2',
-69 silly addNameRange     '1.2.1-beta3',
-69 silly addNameRange     '1.2.1-beta4',
-69 silly addNameRange     '1.2.1',
-69 silly addNameRange     '1.2.2',
-69 silly addNameRange     '1.2.3-beta1',
-69 silly addNameRange     '1.2.3-beta2',
-69 silly addNameRange     '1.2.3-beta3',
-69 silly addNameRange     '1.2.3',
-69 silly addNameRange     '1.2.4-beta1',
-69 silly addNameRange     '1.2.4-beta2',
-69 silly addNameRange     '1.2.4-beta3',
-69 silly addNameRange     '1.2.4',
-69 silly addNameRange     '1.2.5-beta1',
-69 silly addNameRange     '1.2.5-beta2',
-69 silly addNameRange     '1.2.5-beta3',
-69 silly addNameRange     '1.2.5',
-69 silly addNameRange     '1.2.6-beta1',
-69 silly addNameRange     '1.2.6-beta2',
-69 silly addNameRange     '1.2.6-beta3',
-69 silly addNameRange     '1.2.6',
-69 silly addNameRange     '1.2.7',
-69 silly addNameRange     '1.2.8-beta1',
-69 silly addNameRange     '1.2.8-beta2',
-69 silly addNameRange     '1.2.8',
-69 silly addNameRange     '1.2.9',
-69 silly addNameRange     '1.2.10',
-69 silly addNameRange     '1.2.11',
-69 silly addNameRange     '1.2.12',
-69 silly addNameRange     '1.2.13',
-69 silly addNameRange     '1.2.14-beta1',
-69 silly addNameRange     '1.2.14-beta2',
-69 silly addNameRange     '1.2.14-beta3',
-69 silly addNameRange     '1.2.14-beta4',
-69 silly addNameRange     '1.2.14-beta5',
-69 silly addNameRange     '1.2.14-beta6',
-69 silly addNameRange     '1.2.14',
-69 silly addNameRange     '1.3.0-beta1',
-69 silly addNameRange     '1.3.0',
-69 silly addNameRange     '1.3.1',
-69 silly addNameRange     '1.3.2',
-69 silly addNameRange     '1.3.3',
-69 silly addNameRange     '1.3.4',
-69 silly addNameRange     '1.3.5',
-69 silly addNameRange     '1.3.6',
-69 silly addNameRange     '1.3.7',
-69 silly addNameRange     '1.3.8',
-69 silly addNameRange     '1.3.9',
-69 silly addNameRange     '1.3.10',
-69 silly addNameRange     '1.4.0-alpha.1',
-69 silly addNameRange     '1.3.11',
-69 silly addNameRange     '1.3.1-1.alpha.0',
-69 silly addNameRange     '1.4.0-alpha.2',
-69 silly addNameRange     '1.3.12',
-69 silly addNameRange     '1.3.12-beta.1',
-69 silly addNameRange     '1.3.12-beta.2',
-69 silly addNameRange     '1.3.13-beta.0',
-69 silly addNameRange     '1.3.1-3.beta.1',
-69 silly addNameRange     '1.3.1-3.beta.2',
-69 silly addNameRange     '1.3.13',
-69 silly addNameRange     '1.3.1-3.beta.4',
-69 silly addNameRange     '1.3.14-beta',
-69 silly addNameRange     '1.3.14-beta.1',
-69 silly addNameRange     '1.4.0-alpha.3',
-69 silly addNameRange     '1.3.14',
-69 silly addNameRange     '1.4.0-alpha.4',
-69 silly addNameRange     '1.4.0-alpha.5',
-69 silly addNameRange     '1.3.15-beta.0',
-69 silly addNameRange     '1.3.15-beta.1',
-69 silly addNameRange     '1.3.15-beta.2',
-69 silly addNameRange     '1.3.15-beta.3',
-69 silly addNameRange     '1.3.15-beta.4',
-69 silly addNameRange     '1.3.15',
-69 silly addNameRange     '1.3.16',
-69 silly addNameRange     '1.4.0-alpha.6',
-69 silly addNameRange     '1.3.17-beta.0',
-69 silly addNameRange     '1.3.17-beta.1',
-69 silly addNameRange     '1.3.17-beta.2',
-69 silly addNameRange     '1.3.17-beta.3',
-69 silly addNameRange     '1.3.1-7.beta.4',
-69 silly addNameRange     '1.3.17',
-69 silly addNameRange     '1.3.18-beta.0',
-69 silly addNameRange     '1.3.18-beta.1',
-69 silly addNameRange     '1.3.18-beta.2',
-69 silly addNameRange     '1.3.18-beta.3',
-69 silly addNameRange     '1.3.18',
-69 silly addNameRange     '1.3.19-beta.0',
-69 silly addNameRange     '1.3.19-beta.1',
-69 silly addNameRange     '1.3.19-beta.2',
-69 silly addNameRange     '1.3.19-beta.3',
-69 silly addNameRange     '1.3.19-beta.4',
-69 silly addNameRange     '1.3.19',
-69 silly addNameRange     '1.3.20',
-69 silly addNameRange     '1.4.1-beta.0',
-69 silly addNameRange     '1.4.0-beta.1',
-69 silly addNameRange     '1.4.0-beta.2',
-69 silly addNameRange     '1.4.0-beta.3',
-69 silly addNameRange     '1.4.0-beta.5',
-69 silly addNameRange     '1.4.0-beta.6',
-69 silly addNameRange     '1.4.0-beta.7',
-69 silly addNameRange     '1.3.21-beta.0',
-69 silly addNameRange     '1.3.21-beta.1',
-69 silly addNameRange     '1.3.21',
-69 silly addNameRange     '1.3.22',
-69 silly addNameRange     '1.4.0-beta.8',
-69 silly addNameRange     '1.4.0-beta.9',
-69 silly addNameRange     '1.4.0-beta.10',
-69 silly addNameRange     '1.4.0-beta.11',
-69 silly addNameRange     '1.4.0-beta.12',
-69 silly addNameRange     '1.4.0-beta.13',
-69 silly addNameRange     '1.4.0-beta.14',
-69 silly addNameRange     '1.4.0-beta.15',
-69 silly addNameRange     '1.4.0-beta.16',
-69 silly addNameRange     '1.4.0-beta.17',
-69 silly addNameRange     '1.4.0-beta.18',
-69 silly addNameRange     '1.4.0',
-69 silly addNameRange     '1.4.1',
-69 silly addNameRange     '1.4.2',
-69 silly addNameRange     '1.4.3',
-69 silly addNameRange     '1.4.4-beta.0',
-69 silly addNameRange     '1.4.4-beta.2',
-69 silly addNameRange     '1.4.4',
-69 silly addNameRange     '1.4.5-beta.0',
-69 silly addNameRange     '1.4.5-beta.1',
-69 silly addNameRange     '1.4.5-beta.2',
-69 silly addNameRange     '1.4.5-beta.3',
-69 silly addNameRange     '1.4.5',
-69 silly addNameRange     '1.4.6-beta.0' ] ]
-70 verbose addNamed [ 'ionic', '1.4.5' ]
-71 verbose addNamed [ '1.4.5', '1.4.5' ]
-72 silly lockFile f6624f4e-ionic-1-4-5 ionic@1.4.5
-73 verbose lock ionic@1.4.5 /Users/sjoerdsmink/.npm/f6624f4e-ionic-1-4-5.lock
-74 silly lockFile 37e8feca--npmjs-org-ionic-ionic-1-4-5-tgz https://registry.npmjs.org/ionic/-/ionic-1.4.5.tgz
-75 verbose lock https://registry.npmjs.org/ionic/-/ionic-1.4.5.tgz /Users/sjoerdsmink/.npm/37e8feca--npmjs-org-ionic-ionic-1-4-5-tgz.lock
-76 verbose addRemoteTarball [ 'https://registry.npmjs.org/ionic/-/ionic-1.4.5.tgz',
-76 verbose addRemoteTarball   'def0d7eb8b67e1f8e97b8657ce5e2cae4786a6ed' ]
-77 info retry fetch attempt 1 at 11:34:47
-78 verbose fetch to= /var/folders/bg/chbdcws56yqbj2gg0clyvhb00000gn/T/npm-9606-4du1DEyb/registry.npmjs.org/ionic/-/ionic-1.4.5.tgz
-79 http GET https://registry.npmjs.org/ionic/-/ionic-1.4.5.tgz
-80 http 200 https://registry.npmjs.org/ionic/-/ionic-1.4.5.tgz
-81 http 200 https://registry.npmjs.org/to
-82 silly registry.get cb [ 200,
-82 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-82 silly registry.get     etag: '"CKRPTOP8WQE017SCON880300O"',
-82 silly registry.get     'content-type': 'application/json',
-82 silly registry.get     'cache-control': 'max-age=60',
-82 silly registry.get     'content-length': '37252',
-82 silly registry.get     'accept-ranges': 'bytes',
-82 silly registry.get     date: 'Sun, 24 May 2015 09:34:47 GMT',
-82 silly registry.get     via: '1.1 varnish',
-82 silly registry.get     age: '0',
-82 silly registry.get     connection: 'keep-alive',
-82 silly registry.get     'x-served-by': 'cache-ams4133-AMS',
-82 silly registry.get     'x-cache': 'MISS',
-82 silly registry.get     'x-cache-hits': '0',
-82 silly registry.get     'x-timer': 'S1432460087.088060,VS0,VE190',
-82 silly registry.get     vary: 'Accept' } ]
-83 silly addNameRange number 2 { name: 'to', range: '*', hasData: true }
-84 silly addNameRange versions [ 'to',
-84 silly addNameRange   [ '0.0.1',
-84 silly addNameRange     '0.0.2',
-84 silly addNameRange     '0.0.3',
-84 silly addNameRange     '0.1.0',
-84 silly addNameRange     '0.1.1',
-84 silly addNameRange     '0.1.2',
-84 silly addNameRange     '0.2.0',
-84 silly addNameRange     '0.2.1',
-84 silly addNameRange     '0.2.2',
-84 silly addNameRange     '0.2.3',
-84 silly addNameRange     '0.2.4',
-84 silly addNameRange     '0.2.5',
-84 silly addNameRange     '0.2.6',
-84 silly addNameRange     '0.2.7',
-84 silly addNameRange     '0.2.8',
-84 silly addNameRange     '0.2.9' ] ]
-85 verbose addNamed [ 'to', '0.2.9' ]
-86 verbose addNamed [ '0.2.9', '0.2.9' ]
-87 silly lockFile 2515bbf0-to-0-2-9 to@0.2.9
-88 verbose lock to@0.2.9 /Users/sjoerdsmink/.npm/2515bbf0-to-0-2-9.lock
-89 silly lockFile a65d4fc2-gistry-npmjs-org-to-to-0-2-9-tgz https://registry.npmjs.org/to/-/to-0.2.9.tgz
-90 verbose lock https://registry.npmjs.org/to/-/to-0.2.9.tgz /Users/sjoerdsmink/.npm/a65d4fc2-gistry-npmjs-org-to-to-0-2-9-tgz.lock
-91 verbose addRemoteTarball [ 'https://registry.npmjs.org/to/-/to-0.2.9.tgz',
-91 verbose addRemoteTarball   '0ba5a56fe53538db9205ceb6d7ed217aae4635c4' ]
-92 info retry fetch attempt 1 at 11:34:47
-93 verbose fetch to= /var/folders/bg/chbdcws56yqbj2gg0clyvhb00000gn/T/npm-9606-4du1DEyb/registry.npmjs.org/to/-/to-0.2.9.tgz
-94 http GET https://registry.npmjs.org/to/-/to-0.2.9.tgz
-95 silly lockFile 37e8feca--npmjs-org-ionic-ionic-1-4-5-tgz https://registry.npmjs.org/ionic/-/ionic-1.4.5.tgz
-96 silly lockFile 37e8feca--npmjs-org-ionic-ionic-1-4-5-tgz https://registry.npmjs.org/ionic/-/ionic-1.4.5.tgz
-97 silly lockFile f6624f4e-ionic-1-4-5 ionic@1.4.5
-98 silly lockFile f6624f4e-ionic-1-4-5 ionic@1.4.5
-99 silly lockFile 966fc04a-ionic ionic@
-100 silly lockFile 966fc04a-ionic ionic@
-101 http 200 https://registry.npmjs.org/update
-102 silly registry.get cb [ 200,
-102 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-102 silly registry.get     etag: '"7Y8DBB3ASI3QFID32Q0E2UKZL"',
-102 silly registry.get     'content-type': 'application/json',
-102 silly registry.get     'cache-control': 'max-age=60',
-102 silly registry.get     'content-length': '18036',
-102 silly registry.get     'accept-ranges': 'bytes',
-102 silly registry.get     date: 'Sun, 24 May 2015 09:34:47 GMT',
-102 silly registry.get     via: '1.1 varnish',
-102 silly registry.get     age: '0',
-102 silly registry.get     connection: 'keep-alive',
-102 silly registry.get     'x-served-by': 'cache-ams4132-AMS',
-102 silly registry.get     'x-cache': 'MISS',
-102 silly registry.get     'x-cache-hits': '0',
-102 silly registry.get     'x-timer': 'S1432460087.082832,VS0,VE473',
-102 silly registry.get     vary: 'Accept' } ]
-103 silly addNameRange number 2 { name: 'update', range: '*', hasData: true }
-104 silly addNameRange versions [ 'update',
-104 silly addNameRange   [ '0.1.0',
-104 silly addNameRange     '0.2.0',
-104 silly addNameRange     '0.3.0-beta',
-104 silly addNameRange     '0.3.1-beta',
-104 silly addNameRange     '0.3.2-beta',
-104 silly addNameRange     '0.3.3-beta',
-104 silly addNameRange     '0.3.3',
-104 silly addNameRange     '0.3.5',
-104 silly addNameRange     '0.3.6' ] ]
-105 verbose addNamed [ 'update', '0.3.6' ]
-106 verbose addNamed [ '0.3.6', '0.3.6' ]
-107 silly lockFile 03d883a6-update-0-3-6 update@0.3.6
-108 verbose lock update@0.3.6 /Users/sjoerdsmink/.npm/03d883a6-update-0-3-6.lock
-109 silly lockFile 2ca92941-pmjs-org-update-update-0-3-6-tgz https://registry.npmjs.org/update/-/update-0.3.6.tgz
-110 verbose lock https://registry.npmjs.org/update/-/update-0.3.6.tgz /Users/sjoerdsmink/.npm/2ca92941-pmjs-org-update-update-0-3-6-tgz.lock
-111 verbose addRemoteTarball [ 'https://registry.npmjs.org/update/-/update-0.3.6.tgz',
-111 verbose addRemoteTarball   '11bcae2d5fe3413a5dd0910f424d6310e50c99e8' ]
-112 info retry fetch attempt 1 at 11:34:47
-113 verbose fetch to= /var/folders/bg/chbdcws56yqbj2gg0clyvhb00000gn/T/npm-9606-4du1DEyb/registry.npmjs.org/update/-/update-0.3.6.tgz
-114 http GET https://registry.npmjs.org/update/-/update-0.3.6.tgz
-115 http 200 https://registry.npmjs.org/to/-/to-0.2.9.tgz
-116 silly lockFile a65d4fc2-gistry-npmjs-org-to-to-0-2-9-tgz https://registry.npmjs.org/to/-/to-0.2.9.tgz
-117 silly lockFile a65d4fc2-gistry-npmjs-org-to-to-0-2-9-tgz https://registry.npmjs.org/to/-/to-0.2.9.tgz
-118 silly lockFile 2515bbf0-to-0-2-9 to@0.2.9
-119 silly lockFile 2515bbf0-to-0-2-9 to@0.2.9
-120 silly lockFile d4731923-to to@
-121 silly lockFile d4731923-to to@
-122 http 200 https://registry.npmjs.org/update/-/update-0.3.6.tgz
-123 silly lockFile 2ca92941-pmjs-org-update-update-0-3-6-tgz https://registry.npmjs.org/update/-/update-0.3.6.tgz
-124 silly lockFile 2ca92941-pmjs-org-update-update-0-3-6-tgz https://registry.npmjs.org/update/-/update-0.3.6.tgz
-125 silly lockFile 03d883a6-update-0-3-6 update@0.3.6
-126 silly lockFile 03d883a6-update-0-3-6 update@0.3.6
-127 silly lockFile f8258749-update update@
-128 silly lockFile f8258749-update update@
-129 silly resolved [ { name: 'ionic',
-129 silly resolved     version: '1.4.5',
-129 silly resolved     preferGlobal: true,
-129 silly resolved     description: 'A tool for creating and developing Ionic Framework mobile apps.',
-129 silly resolved     homepage: 'http://ionicframework.com/',
-129 silly resolved     bin: { ionic: 'bin/ionic' },
-129 silly resolved     scripts:
-129 silly resolved      { bump: 'node lib/tasks/bumpversion',
-129 silly resolved        'beta-bump': 'node lib/tasks/bumpversion --level pre --identifier beta',
-129 silly resolved        'publish-release': 'node lib/tasks/bumpversion --npmPublish',
-129 silly resolved        'publish-tag': 'node lib/tasks/bumpversion --level beta --npmPublishTag',
-129 silly resolved        'full-release': 'node lib/tasks/bumpversion --npmInstall --git --npmPublish',
-129 silly resolved        test: 'npm run jasmine',
-129 silly resolved        e2e: 'jasmine-node --captureExceptions ./e2e',
-129 silly resolved        jasmine: 'jasmine-node --captureExceptions  ./spec' },
-129 silly resolved     keywords:
-129 silly resolved      [ 'ionic',
-129 silly resolved        'ionic framework',
-129 silly resolved        'ionicframework',
-129 silly resolved        'mobile',
-129 silly resolved        'app',
-129 silly resolved        'hybrid',
-129 silly resolved        'cordova',
-129 silly resolved        'phonegap' ],
-129 silly resolved     repository:
-129 silly resolved      { type: 'git',
-129 silly resolved        url: 'https://github.com/driftyco/ionic-cli.git' },
-129 silly resolved     contributors: [ [Object], [Object], [Object], [Object] ],
-129 silly resolved     license: 'MIT',
-129 silly resolved     dependencies:
-129 silly resolved      { archiver: '0.5.1',
-129 silly resolved        async: '^0.9.0',
-129 silly resolved        cheerio: '^0.19.0',
-129 silly resolved        'cli-table': '^0.3.1',
-129 silly resolved        colors: '0.6.2',
-129 silly resolved        connect: '3.1.1',
-129 silly resolved        'connect-livereload': '0.5.2',
-129 silly resolved        crc: '3.2.1',
-129 silly resolved        'cross-spawn': '0.2.3',
-129 silly resolved        'event-stream': '3.0.x',
-129 silly resolved        finalhandler: '0.2.0',
-129 silly resolved        'form-data': '0.1.4',
-129 silly resolved        gulp: '3.8.8',
-129 silly resolved        'ionic-app-lib': '0.0.22',
-129 silly resolved        ncp: '0.4.2',
-129 silly resolved        npm: '2.1.3',
-129 silly resolved        'opbeat-ionic': '^1.1.3',
-129 silly resolved        open: '0.0.5',
-129 silly resolved        optimist: '0.6.0',
-129 silly resolved        progress: '1.1.7',
-129 silly resolved        prompt: '0.2.12',
-129 silly resolved        'proxy-middleware': '^0.7.0',
-129 silly resolved        q: '1.0.1',
-129 silly resolved        request: '2.51.0',
-129 silly resolved        semver: '^4.2.0',
-129 silly resolved        'serve-static': '1.7.1',
-129 silly resolved        shelljs: '0.2.6',
-129 silly resolved        'tiny-lr-fork': '0.0.5',
-129 silly resolved        underscore: '~1.7.0',
-129 silly resolved        unzip: '0.1.9',
-129 silly resolved        'vinyl-fs': '0.3.7',
-129 silly resolved        xml2js: '0.4.4' },
-129 silly resolved     devDependencies: { 'jasmine-node': '^1.14.5' },
-129 silly resolved     gitHead: '4da736396f7c1a23b15716c62839ba5f411b4d8e',
-129 silly resolved     bugs: { url: 'https://github.com/driftyco/ionic-cli/issues' },
-129 silly resolved     _id: 'ionic@1.4.5',
-129 silly resolved     _shasum: 'def0d7eb8b67e1f8e97b8657ce5e2cae4786a6ed',
-129 silly resolved     _from: 'ionic@',
-129 silly resolved     _npmVersion: '2.5.1',
-129 silly resolved     _nodeVersion: '0.10.33',
-129 silly resolved     _npmUser: { name: 'jbavari', email: 'jbavari@gmail.com' },
-129 silly resolved     dist:
-129 silly resolved      { shasum: 'def0d7eb8b67e1f8e97b8657ce5e2cae4786a6ed',
-129 silly resolved        tarball: 'http://registry.npmjs.org/ionic/-/ionic-1.4.5.tgz' },
-129 silly resolved     maintainers: [ [Object], [Object], [Object] ],
-129 silly resolved     directories: {},
-129 silly resolved     _resolved: 'https://registry.npmjs.org/ionic/-/ionic-1.4.5.tgz' },
-129 silly resolved   { name: 'to',
-129 silly resolved     description: 'load/convert between xml,json,yaml formats',
-129 silly resolved     homepage: 'https://github.com/openmason/to',
-129 silly resolved     version: '0.2.9',
-129 silly resolved     author: { name: 'el aras', email: 'openmason@gmail.com' },
-129 silly resolved     dependencies:
-129 silly resolved      { handy: '>= 0.0.11',
-129 silly resolved        underscore: '>= 1.4.0',
-129 silly resolved        'js-yaml': '>= 1.0.2',
-129 silly resolved        htmlparser: '>= 1.7.6',
-129 silly resolved        optimist: '>= 0.3.5' },
-129 silly resolved     devDependencies: { mocha: '>= 1.6.0', should: '>= 1.2.0' },
-129 silly resolved     keywords: [ 'converter', 'convertor', 'json', 'xml', 'yaml' ],
-129 silly resolved     repository: { type: 'git', url: 'git://github.com/openmason/to' },
-129 silly resolved     main: 'index',
-129 silly resolved     scripts: { prepublish: 'npm prune', test: 'make test' },
-129 silly resolved     engines: { node: '>= 0.8.0' },
-129 silly resolved     readme: '[![build status](https://secure.travis-ci.org/openmason/to.png)](http://travis-ci.org/openmason/to)\n\n# to.js\ncollection of convertors.\nComes with command line options to use the convertors along with a library version that can be used within programs as well.\n\n# Solves\n  * read input formats json, xml, yaml \n  * converts the document to internal javascript object form\n  * write output as json, yaml documents\n  * only input xml is handled (no output xml yet)\n\n## Installation\n\n    $ npm install -g to\n    $ npm install to\n\n## Usage\n\nCommand line:\n\n     # reads xml file and prints it in yml\n     $ to -i examples/sample.xml -o .yaml\n     \n     # reads yaml and prints it in json\n     $ to -i examples/sample.yml -o .json\n\nWithin your program:\n\n    var to = require(\'to\');\n    \n    # Load yaml\n    var yamldoc = to.format.yaml.load(\'config.yaml\');\n    \n    # print doc in yaml \n    var doc = ...;\n    console.log(to.format.yaml.stringify(doc));\n\n * refer to examples directory for xml, json, yaml code\n\n## Example\nFor a sample input xml:\n\n    <?xml version="1.0" encoding="UTF-8" ?>\n    <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">    \n    <dummy>\n    <value>15</value>\n    <value>35</value>\n    <value>5</value>\n    <value>4784</value>\n    <value>one more</value>\n    <h>decent</h>\n    <h>list</h>\n    <h>another</h>\n    <object>value</object>\n    <inner>\n      <h1>value</h1>\n      <li>got</li>\n      <li>milk</li>\n    </inner>\n   </dummy>\n\nOutput in json:\n\n    {\n      "dummy": {\n        "value": [\n          "15",\n          "35",\n          "5",\n          "4784",\n          "one more"\n        ],\n        "h": [\n          "decent",\n          "list",\n          "another"\n        ],\n        "object": "value",\n        "inner": {\n          "h1": "value",\n          "li": [\n            "got",\n            "milk"\n          ]\n        }\n      }\n    }\n    \n    # to try this example\n    $ to -i examples/sample1.xml -o .json\n\nOutput in yaml:\n\n    dummy: \n      value: \n        - 15\n        - 35\n        - 5\n        - 4784\n        - "one more"\n      h: \n        - decent\n        - list\n        - another\n      object: value\n      inner: \n        h1: value\n        li: \n          - got\n          - milk\n\n    # to try this example\n    $ to -i examples/sample1.xml -o .yaml\n\n## Todo\n * Input html (be forgiving with bad html)\n * Input markdown \n * Output xml\n * Output html\n * add unit tests\n * allow beautification params for all outputs \n\n## Test cases\nTo execute full test cases\n\n    $ make\n\n',
-129 silly resolved     _id: 'to@0.2.9',
-129 silly resolved     dist:
-129 silly resolved      { shasum: '0ba5a56fe53538db9205ceb6d7ed217aae4635c4',
-129 silly resolved        tarball: 'http://registry.npmjs.org/to/-/to-0.2.9.tgz' },
-129 silly resolved     maintainers: [ [Object], [Object] ],
-129 silly resolved     directories: {},
-129 silly resolved     _shasum: '0ba5a56fe53538db9205ceb6d7ed217aae4635c4',
-129 silly resolved     _from: 'to@',
-129 silly resolved     _resolved: 'https://registry.npmjs.org/to/-/to-0.2.9.tgz' },
-129 silly resolved   { name: 'update',
-129 silly resolved     description: 'Update the year in all files in a project using glob patterns.',
-129 silly resolved     version: '0.3.6',
-129 silly resolved     homepage: 'https://github.com/jonschlinkert/update',
-129 silly resolved     author:
-129 silly resolved      { name: 'Jon Schlinkert',
-129 silly resolved        url: 'https://github.com/jonschlinkert' },
-129 silly resolved     repository: { type: 'git', url: 'https://github.com/jonschlinkert/update' },
-129 silly resolved     bugs: { url: 'https://github.com/jonschlinkert/update/issues' },
-129 silly resolved     license: 'MIT',
-129 silly resolved     files: [ 'cli.js', 'lib/', 'templates/', 'verbfile.js', 'plugins/' ],
-129 silly resolved     main: 'index.js',
-129 silly resolved     preferGlobal: true,
-129 silly resolved     bin: { update: './cli.js' },
-129 silly resolved     engines: { node: '>=0.10.0' },
-129 silly resolved     scripts: { test: 'mocha' },
-129 silly resolved     dependencies:
-129 silly resolved      { 'arr-diff': '^1.0.1',
-129 silly resolved        'array-intersection': '^0.1.1',
-129 silly resolved        'array-unique': '^0.1.1',
-129 silly resolved        chalk: '^1.0.0',
-129 silly resolved        del: '^1.1.1',
-129 silly resolved        'export-files': '^1.1.0',
-129 silly resolved        glob: '^4.4.1',
-129 silly resolved        'gray-matter': '^1.2.5',
-129 silly resolved        'gulp-util': '^3.0.4',
-129 silly resolved        'has-banner': '^0.2.0',
-129 silly resolved        'kind-of': '^1.1.0',
-129 silly resolved        'log-symbols': '^1.0.2',
-129 silly resolved        'merge-deep': '^1.0.1',
-129 silly resolved        micromatch: '^1.4.2',
-129 silly resolved        'parse-copyright': '^0.4.0',
-129 silly resolved        'requires-regex': '^0.2.0',
-129 silly resolved        'sort-object': '^1.0.0',
-129 silly resolved        through2: '^0.6.3',
-129 silly resolved        'update-banner': '^0.1.1',
-129 silly resolved        'update-license': '^0.3.0',
-129 silly resolved        'update-package': '^0.2.0',
-129 silly resolved        verb: '^0.6.1' },
-129 silly resolved     keywords: [ 'javascript', 'keys', 'object', 'sort' ],
-129 silly resolved     gitHead: '20af38473d5630c5b725a34f041df0aabf050935',
-129 silly resolved     _id: 'update@0.3.6',
-129 silly resolved     _shasum: '11bcae2d5fe3413a5dd0910f424d6310e50c99e8',
-129 silly resolved     _from: 'update@',
-129 silly resolved     _npmVersion: '2.5.1',
-129 silly resolved     _nodeVersion: '0.12.0',
-129 silly resolved     _npmUser: { name: 'jonschlinkert', email: 'github@sellside.com' },
-129 silly resolved     maintainers: [ [Object] ],
-129 silly resolved     dist:
-129 silly resolved      { shasum: '11bcae2d5fe3413a5dd0910f424d6310e50c99e8',
-129 silly resolved        tarball: 'http://registry.npmjs.org/update/-/update-0.3.6.tgz' },
-129 silly resolved     directories: {},
-129 silly resolved     _resolved: 'https://registry.npmjs.org/update/-/update-0.3.6.tgz' } ]
-130 info install ionic@1.4.5 into /usr/local/lib
-131 info install to@0.2.9 into /usr/local/lib
-132 info install update@0.3.6 into /usr/local/lib
-133 info installOne ionic@1.4.5
-134 info installOne to@0.2.9
-135 info installOne update@0.3.6
-136 verbose lib/node_modules/to unbuild
-137 verbose lib/node_modules/update unbuild
-138 verbose lib/node_modules/ionic unbuild
-139 verbose tar unpack /Users/sjoerdsmink/.npm/to/0.2.9/package.tgz
-140 silly lockFile 75643bb7-ar-usr-local-lib-node-modules-to tar:///usr/local/lib/node_modules/to
-141 verbose lock tar:///usr/local/lib/node_modules/to /Users/sjoerdsmink/.npm/75643bb7-ar-usr-local-lib-node-modules-to.lock
-142 silly lockFile 6c5e0f5e-rdsmink-npm-to-0-2-9-package-tgz tar:///Users/sjoerdsmink/.npm/to/0.2.9/package.tgz
-143 verbose lock tar:///Users/sjoerdsmink/.npm/to/0.2.9/package.tgz /Users/sjoerdsmink/.npm/6c5e0f5e-rdsmink-npm-to-0-2-9-package-tgz.lock
-144 verbose tar unpack /Users/sjoerdsmink/.npm/update/0.3.6/package.tgz
-145 silly lockFile 3dadf09e-sr-local-lib-node-modules-update tar:///usr/local/lib/node_modules/update
-146 verbose lock tar:///usr/local/lib/node_modules/update /Users/sjoerdsmink/.npm/3dadf09e-sr-local-lib-node-modules-update.lock
-147 silly lockFile 17f4426b-ink-npm-update-0-3-6-package-tgz tar:///Users/sjoerdsmink/.npm/update/0.3.6/package.tgz
-148 verbose lock tar:///Users/sjoerdsmink/.npm/update/0.3.6/package.tgz /Users/sjoerdsmink/.npm/17f4426b-ink-npm-update-0-3-6-package-tgz.lock
-149 silly gunzTarPerm modes [ '755', '644' ]
-150 info preuninstall ionic@1.3.14
-151 silly gunzTarPerm modes [ '755', '644' ]
-152 info uninstall ionic@1.3.14
-153 verbose true,/usr/local/lib/node_modules,/usr/local/lib/node_modules unbuild ionic@1.3.14
-154 verbose /usr/local/bin,[object Object] binRoot
-155 error Error: EACCES, mkdir '/usr/local/lib/node_modules/to'
-155 error  { [Error: EACCES, mkdir '/usr/local/lib/node_modules/to']
-155 error   errno: 3,
-155 error   code: 'EACCES',
-155 error   path: '/usr/local/lib/node_modules/to',
-155 error   fstream_type: 'Directory',
-155 error   fstream_path: '/usr/local/lib/node_modules/to',
-155 error   fstream_class: 'DirWriter',
-155 error   fstream_stack:
-155 error    [ '/usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
-155 error      '/usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
-155 error      'Object.oncomplete (fs.js:108:15)' ] }
-156 error Please try running this command again as root/Administrator.
-157 error System Darwin 14.3.0
-158 error command "node" "/usr/local/bin/npm" "install" "-g" "ionic" "to" "update"
-159 error cwd /Users/sjoerdsmink/Desktop/app
-160 error node -v v0.10.35
-161 error npm -v 1.4.28
-162 error path /usr/local/lib/node_modules/to
-163 error fstream_path /usr/local/lib/node_modules/to
-164 error fstream_type Directory
-165 error fstream_class DirWriter
-166 error code EACCES
-167 error errno 3
-168 error stack Error: EACCES, mkdir '/usr/local/lib/node_modules/to'
-169 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
-169 error fstream_stack /usr/local/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
-169 error fstream_stack Object.oncomplete (fs.js:108:15)
-170 verbose exit [ 3, true ]
+6 verbose parsed url   pathname: 'ionic@1.4.5alpha.6',
+6 verbose parsed url   path: 'ionic@1.4.5alpha.6',
+6 verbose parsed url   href: 'ionic@1.4.5alpha.6' }
+7 verbose cache add name="ionic" spec="1.4.5alpha.6" args=["ionic","1.4.5alpha.6"]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: '1.4.5alpha.6',
+8 verbose parsed url   path: '1.4.5alpha.6',
+8 verbose parsed url   href: '1.4.5alpha.6' }
+9 verbose addNamed [ 'ionic', '1.4.5alpha.6' ]
+10 verbose addNamed [ null, null ]
+11 silly lockFile c2dc5f3d-ionic-1-4-5alpha-6 ionic@1.4.5alpha.6
+12 verbose lock ionic@1.4.5alpha.6 /Users/sjoerdsmink/.npm/c2dc5f3d-ionic-1-4-5alpha-6.lock
+13 verbose request where is /ionic
+14 verbose request registry https://registry.npmjs.org/
+15 verbose request id 5836d9cd733bf369
+16 verbose url raw /ionic
+17 verbose url resolving [ 'https://registry.npmjs.org/', './ionic' ]
+18 verbose url resolved https://registry.npmjs.org/ionic
+19 verbose request where is https://registry.npmjs.org/ionic
+20 info trying registry request attempt 1 at 16:51:36
+21 verbose etag "LT9ZCDKT9HS5TRGUD78V086G"
+22 http GET https://registry.npmjs.org/ionic
+23 http 304 https://registry.npmjs.org/ionic
+24 silly registry.get cb [ 304,
+24 silly registry.get   { date: 'Sat, 30 May 2015 14:51:36 GMT',
+24 silly registry.get     via: '1.1 varnish',
+24 silly registry.get     'cache-control': 'max-age=60',
+24 silly registry.get     etag: '"LT9ZCDKT9HS5TRGUD78V086G"',
+24 silly registry.get     age: '11',
+24 silly registry.get     connection: 'keep-alive',
+24 silly registry.get     'x-served-by': 'cache-fra1239-FRA',
+24 silly registry.get     'x-cache': 'HIT',
+24 silly registry.get     'x-cache-hits': '1',
+24 silly registry.get     'x-timer': 'S1432997496.240400,VS0,VE2',
+24 silly registry.get     vary: 'Accept' } ]
+25 verbose etag https://registry.npmjs.org/ionic from cache
+26 silly lockFile c2dc5f3d-ionic-1-4-5alpha-6 ionic@1.4.5alpha.6
+27 silly lockFile c2dc5f3d-ionic-1-4-5alpha-6 ionic@1.4.5alpha.6
+28 error Error: version not found: ionic@1.4.5-alpha.6
+28 error     at /usr/local/lib/node_modules/npm/lib/cache/add-named.js:125:12
+28 error     at saved (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/get.js:167:7)
+28 error     at Object.oncomplete (fs.js:108:15)
+29 error If you need help, you may report this *entire* log,
+29 error including the npm and node versions, at:
+29 error     <http://github.com/npm/npm/issues>
+30 error System Darwin 14.3.0
+31 error command "node" "/usr/local/bin/npm" "install" "-g" "ionic@1.4.5alpha.6"
+32 error cwd /Users/sjoerdsmink/Desktop/app
+33 error node -v v0.10.35
+34 error npm -v 1.4.28
+35 verbose exit [ 1, true ]
