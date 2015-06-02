@@ -80,7 +80,7 @@ angular.module('tournia.services', [])
             setNotificationsEnabled: function(enabled) {
                 var deferred = $q.defer();
                 this.getDeviceToken().then(function(deviceToken){
-                    $http.post(apiUrl +'/notifications/enabled', {platform:'ios', token: deviceToken}).success(function(data){
+                    $http.post(apiUrl +'/notifications/enabled', {platform:'iOS', deviceToken: deviceToken, enabled: enabled}).success(function(data){
                         deferred.resolve(data);
                     }).error(function(){
                         deferred.reject("An error occurred while fetching items");
@@ -91,10 +91,12 @@ angular.module('tournia.services', [])
 
             setNotificationsNextMatch: function(period) {
                 var deferred = $q.defer();
-                $http.post(apiUrl +'/notifications/nextmatch', {platform:'ios', token: deviceToken, period: period}).success(function(data){
-                    deferred.resolve(data);
-                }).error(function(){
-                    deferred.reject("An error occurred while fetching items");
+                this.getDeviceToken().then(function(deviceToken){
+                    $http.post(apiUrl +'/notifications/nextmatch', {platform:'iOS', deviceToken: deviceToken, period: period}).success(function(data){
+                        deferred.resolve(data);
+                    }).error(function(){
+                        deferred.reject("An error occurred while fetching items");
+                    });
                 });
                 return deferred.promise;
             },

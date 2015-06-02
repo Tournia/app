@@ -37,13 +37,13 @@
                     About next match
                 </div>
                 <select ng-model="notificationsNextMatch" ng-change="setNotificationsNextMatch(notificationsNextMatch)">
-                    <option ng-selected="notificationsNextMatch == -1">Never</option>
-                    <option ng-selected="notificationsNextMatch == 5">5 matches before</option>
-                    <option ng-selected="notificationsNextMatch == 4">4 matches before</option>
-                    <option ng-selected="notificationsNextMatch == 3">3 matches before</option>
-                    <option ng-selected="notificationsNextMatch == 2">2 matches before</option>
-                    <option ng-selected="notificationsNextMatch == 1">1 matches before</option>
-                    <option ng-selected="notificationsNextMatch == 0">0 matches before</option>
+                    <option value="-1" ng-selected="notificationsNextMatch == -1">Never</option>
+                    <option value="5" ng-selected="notificationsNextMatch == 5">5 matches before</option>
+                    <option value="4" ng-selected="notificationsNextMatch == 4">4 matches before</option>
+                    <option value="3" ng-selected="notificationsNextMatch == 3">3 matches before</option>
+                    <option value="2" ng-selected="notificationsNextMatch == 2">2 matches before</option>
+                    <option value="1" ng-selected="notificationsNextMatch == 1">1 matches before</option>
+                    <option value="0" ng-selected="notificationsNextMatch == 0">0 matches before</option>
                 </select>
             </li>
 
