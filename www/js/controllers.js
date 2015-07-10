@@ -175,10 +175,12 @@ angular.module('tournia.controllers', [])
 })
 
 .controller('TournamentsCtrl', function($scope, $localstorage, $http, $rootScope) {
-    $http.get(apiUrl +'/mytournaments').
-        success(function(data, status, headers, config) {
-            $scope.mytournaments = data;
-        });
+    if ($rootScope.isLoggedin) {
+        $http.get(apiUrl +'/mytournaments').
+            success(function(data, status, headers, config) {
+                $scope.mytournaments = data;
+            });
+    }
 
     $http.get(apiUrl +'/tournaments').
         success(function(data, status, headers, config) {
