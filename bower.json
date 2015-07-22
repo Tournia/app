@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "bootstrap-sass": "~3.3.4",
-    "angular-http-auth": "~1.2.2"
+    "angular-http-auth": "~1.2.2",
+    "angular-websocket": "~1.0.13"
   }
 }
