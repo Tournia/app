@@ -124,7 +124,7 @@ angular.module('tournia.controllers', [])
     }
 })
 
-.controller('AppCtrl', function($scope, $ionicModal, $http, $ionicPopup, $localstorage, authService, $rootScope) {
+.controller('AppCtrl', function($scope, $ionicModal, $http, $ionicPopup, $localstorage, authService, $rootScope, $stateParams) {
     // Form data for the login modal
     $scope.loginData = {};
 
@@ -202,6 +202,8 @@ angular.module('tournia.controllers', [])
         console.log('Ionic Push: Got token ', data.token, data.platform);
         $scope.token = data.token;
     });
+
+    $rootScope.tournamentUrl = $stateParams.tournamentUrl;
 })
 
 .controller('TournamentsCtrl', function($scope, $localstorage, $http, $rootScope) {
