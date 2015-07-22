@@ -18,19 +18,19 @@
         </ion-header-bar>
         <ion-content>
             <ion-list>
-                <ion-item nav-clear menu-close ng-click="login()" ng-if="!isLoggedin">
+                <ion-item nav-clear menu-close ng-click="login()" ng-if="!isLoggedin && !webMode">
                     <i class="icon ion-unlocked"></i>
                     Login
                 </ion-item>
-                <ion-item nav-clear menu-close ng-click="logout()" ng-if="isLoggedin">
+                <ion-item nav-clear menu-close ng-click="logout()" ng-if="isLoggedin && !webMode">
                     <i class="icon ion-locked"></i>
                     Logout
                 </ion-item>
-                <ion-item nav-clear menu-close href="{{hrefPrefix}}app/tournaments">
+                <ion-item nav-clear menu-close href="{{hrefPrefix}}tournaments">
                     <i class="icon ion-trophy"></i>
                     Tournaments
                 </ion-item>
-                <ion-item nav-clear menu-close href="{{hrefPrefix}}app/settings">
+                <ion-item nav-clear menu-close href="{{hrefPrefix}}settings" ng-if="!webMode">
                     <i class="icon ion-settings"></i>
                     Settings
                 </ion-item>

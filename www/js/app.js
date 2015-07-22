@@ -69,14 +69,14 @@ angular.module('tournia', ['ionic', 'tournia.controllers', 'tournia.services', '
 
 
     .state('app', {
-        url: "/app",
+        url: "/",
         abstract: true,
         templateUrl: "templates/menu.html",
         controller: 'AppCtrl'
     })
 
     .state('app.settings', {
-        url: "/settings",
+        url: "settings",
         views: {
             'menuContent': {
                 templateUrl: "templates/settings.html",
@@ -86,7 +86,7 @@ angular.module('tournia', ['ionic', 'tournia.controllers', 'tournia.services', '
     })
 
     .state('app.tournaments', {
-        url: "/tournaments",
+        url: "tournaments",
         views: {
             'menuContent': {
                 templateUrl: "templates/tournaments.html",
@@ -97,11 +97,21 @@ angular.module('tournia', ['ionic', 'tournia.controllers', 'tournia.services', '
 
     // Each tournament has its own nav history stack:
     .state('app.tournament', {
-        url: "/t/:tournamentUrl",
+        url: "t/:tournamentUrl",
         abstract: true,
         views: {
             'menuContent': {
                 templateUrl: "templates/tabs.html"
+            }
+        }
+    })
+
+    .state('app.tournament.info_redirect', {
+        url: '/',
+        views: {
+            'tab-info': {
+                templateUrl: 'templates/tab-info.html',
+                controller: 'InfoCtrl'
             }
         }
     })
@@ -148,7 +158,7 @@ angular.module('tournia', ['ionic', 'tournia.controllers', 'tournia.services', '
     });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/tournaments');
+    $urlRouterProvider.otherwise('/tournaments');
 
 })
 
