@@ -55,6 +55,9 @@ angular.module('tournia', ['ionic', 'tournia.controllers', 'tournia.services', '
             StatusBar.styleDefault();
         }
     });
+
+    $rootScope.hrefPrefix = (webMode) ? '' : '#/';
+    $rootScope.webMode = webMode;
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -158,4 +161,8 @@ angular.module('tournia', ['ionic', 'tournia.controllers', 'tournia.services', '
         api_key: '395de2625c7d8c446f1c26dd715585b37f301e28da8b7719',
         dev_push: true
     });
+}])
+
+.config(['$locationProvider', function($locationProvider) {
+    $locationProvider.html5Mode(webMode);
 }]);
