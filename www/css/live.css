@@ -614,3 +614,16 @@ h2.table-title {
   width: 100px;
   padding: 0px 6px;
 }
+.title.title-center.header-item::after {
+  content: "Powered by\ATournia.net";
+  border-left: 2px solid #ffffff;
+  margin-left: 10px;
+  padding-left: 8px;
+  white-space: pre;
+  font-size: 0.55em !important;
+  text-transform: uppercase;
+  text-align: left;
+  position: absolute;
+  top: 7px;
+  line-height: 15px;
+}
