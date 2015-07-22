@@ -1,10 +1,16 @@
 angular.module('tournia.controllers', [])
 
 
-.controller('MatchesCtrl', function($scope, Matches, $ionicModal) {
+.controller('MatchesCtrl', function($scope, Matches, $ionicModal, $http, $stateParams) {
     $scope.doRefresh = function() {
         self.updateView();
     };
+
+    $http.get(apiUrl +'/'+ $stateParams.tournamentUrl +'/tournament').
+    success(function(data, status, headers, config) {
+        $scope.isLiveScoreAllowed = false;
+        $scope.isLive2ndCallAllowed = false;
+    });
 
     self.updateView = function() {
         $scope.isLoading = true;

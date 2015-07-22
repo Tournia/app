@@ -61,8 +61,8 @@
                         <td class="team team2">
                             <span class="player" ng-repeat="player in match.team2Players">{{player}}</span>
                         </td>
-                        <td class="actions">
-                            <button class="button button-balanced" ng-click="openScoreModal()">
+                        <td class="actions" ng-if="isLiveScoreAllowed || isLive2ndCallAllowed">
+                            <button class="button button-balanced" ng-click="openScoreModal()" ng-if="isLiveScoreAllowed">
                                 Enter score
                             </button>
                         </td>
