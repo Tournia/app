@@ -606,3 +606,11 @@ h2.table-title {
   /* Opera 11.10+ */
   background: -o-linear-gradient(top, #f3f2f0, transparent);
 }
+#current-matches-table .actions {
+  width: 120px;
+  text-align: right;
+}
+#current-matches-table .actions button {
+  width: 100px;
+  padding: 0px 6px;
+}

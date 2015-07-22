@@ -61,6 +61,11 @@
                         <td class="team team2">
                             <span class="player" ng-repeat="player in match.team2Players">{{player}}</span>
                         </td>
+                        <td class="actions">
+                            <button class="button button-balanced" ng-click="openScoreModal()">
+                                Enter score
+                            </button>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -103,3 +108,48 @@
         </div></div>
     </ion-content>
 </ion-view>
+
+<script id="score-modal.html" type="text/ng-template">
+    <ion-modal-view>
+        <ion-header-bar>
+            <h1 class="title">Match scoring</h1>
+            <button class="button button-clear pull-right" ng-click="closeModal()">
+                ×
+            </button>
+        </ion-header-bar>
+        <ion-content>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Match <span class="modalLocalId"></span></th>
+                    <th><span class="modalRound"></span></th>
+                    <th><span class="modalDiscipline"></span></th>
+                </tr>
+                <tr>
+                    <td><span class="modalTeam1"></span></td>
+                    <td>vs</td>
+                    <td><span class="modalTeam2"></span></td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="input-group" style="width:200px">
+                <div class="input-group-addon">Set xx</div>
+                <input type="text" class="form-control" placeholder="__" size="8" maxlength="2">
+                <div class="input-group-addon"> - </div>
+                <input type="text" class="form-control" placeholder="__" size="8" maxlength="2">
+            </div>
+
+            <input type="hidden" class="modalMatchId" value="" />
+        </ion-content>
+        <ion-footer-bar>
+            <div class="buttons pull-right">
+                <button class="button pull-right" ng-click="closeModal()">
+                    Cancel
+                </button> &nbsp;
+                <button class="button button-positive pull-right icon-left ion-edit">
+                    Save
+                </button>
+            </div>
+        </ion-footer-bar>
+    </ion-modal-view>
+</script>

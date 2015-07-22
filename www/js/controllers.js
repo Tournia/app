@@ -1,7 +1,7 @@
 angular.module('tournia.controllers', [])
 
 
-.controller('MatchesCtrl', function($scope, Matches) {
+.controller('MatchesCtrl', function($scope, Matches, $ionicModal) {
     $scope.doRefresh = function() {
         self.updateView();
     };
@@ -50,7 +50,31 @@ angular.module('tournia.controllers', [])
     }
 
 
+    // Match scoring modal //
+    $ionicModal.fromTemplateUrl('score-modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.matchModal = modal;
+    });
+    $scope.openScoreModal = function(match) {
+        $scope.matchModal.show();
+    };
+    $scope.closeModal = function() {
+        $scope.matchModal.hide();
+    };
+    //Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.matchModal.remove();
+    });
+    // Execute action on hide modal
+    $scope.$on('modal.hidden', function() {
+        // Execute action
+    });
+
 })
+
+
 
 .controller('RankingsCtrl', function($scope, Rankings) {
     Rankings.getDisciplines().then(function(data){
