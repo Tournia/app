@@ -58,6 +58,7 @@ angular.module('tournia', ['ionic', 'tournia.controllers', 'tournia.services', '
 
     $rootScope.hrefPrefix = (webMode) ? '' : '#/';
     $rootScope.webMode = webMode;
+    $rootScope.desktopUrl = desktopUrl;
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
