@@ -10,6 +10,10 @@ $ npm install
 ```
 *Note: For a global install of -g ionic, OSX/Linux users may need to prefix the command with sudo.*
 
+To install lib libraries
+```bash
+$ bower update
+```
 
 To view the result in your browser:
 ```bash
