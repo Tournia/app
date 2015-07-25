@@ -627,3 +627,10 @@ h2.table-title {
   top: 7px;
   line-height: 15px;
 }
+#scoreModal span.player {
+  display: block;
+}
+#scoreModal .scoreModalSets {
+  width: 200px;
+  padding: 10px;
+}

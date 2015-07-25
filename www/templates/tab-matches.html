@@ -62,7 +62,7 @@
                             <span class="player" ng-repeat="player in match.team2Players">{{player}}</span>
                         </td>
                         <td class="actions" ng-if="isLiveScoreAllowed || isLive2ndCallAllowed">
-                            <button class="button button-balanced" ng-click="openScoreModal()" ng-if="isLiveScoreAllowed">
+                            <button class="button button-balanced" ng-click="openScoreModal(match)" ng-if="match.matchId > 0 && isLiveScoreAllowed">
                                 Enter score
                             </button>
                         </td>
@@ -110,7 +110,7 @@
 </ion-view>
 
 <script id="score-modal.html" type="text/ng-template">
-    <ion-modal-view>
+    <ion-modal-view id="scoreModal">
         <ion-header-bar>
             <h1 class="title">Match scoring</h1>
             <button class="button button-clear pull-right" ng-click="closeModal()">
@@ -121,32 +121,35 @@
             <table class="table">
                 <tbody>
                 <tr>
-                    <th>Match <span class="modalLocalId"></span></th>
-                    <th><span class="modalRound"></span></th>
-                    <th><span class="modalDiscipline"></span></th>
+                    <th>Match {{matchModalMatch.localId}}</th>
+                    <th>{{matchModalMatch.round}}</th>
+                    <th>{{matchModalMatch.discipline}}</th>
                 </tr>
                 <tr>
-                    <td><span class="modalTeam1"></span></td>
+                    <td>
+                        <span class="player" ng-repeat="player in matchModalMatch.team1Players">{{player}}</span>
+                    </td>
                     <td>vs</td>
-                    <td><span class="modalTeam2"></span></td>
+                    <td>
+                        <span class="player" ng-repeat="player in matchModalMatch.team2Players">{{player}}</span>
+                    </td>
                 </tr>
                 </tbody>
             </table>
-            <div class="input-group" style="width:200px">
-                <div class="input-group-addon">Set xx</div>
-                <input type="text" class="form-control" placeholder="__" size="8" maxlength="2">
+            <div class="input-group scoreModalSets" ng-repeat="(setNr, set) in scoreModalSets">
+                <div class="input-group-addon">Set {{setNr}}</div>
+                <input type="text" class="form-control" placeholder="__" size="8" maxlength="2" ng-model="set.team1">
                 <div class="input-group-addon"> - </div>
-                <input type="text" class="form-control" placeholder="__" size="8" maxlength="2">
+                <input type="text" class="form-control" placeholder="__" size="8" maxlength="2" ng-model="set.team2">
             </div>
 
-            <input type="hidden" class="modalMatchId" value="" />
         </ion-content>
         <ion-footer-bar>
             <div class="buttons pull-right">
                 <button class="button pull-right" ng-click="closeModal()">
                     Cancel
                 </button> &nbsp;
-                <button class="button button-positive pull-right icon-left ion-edit">
+                <button class="button button-positive pull-right icon-left ion-edit" ng-click="sendScoreModal(matchModalMatch)">
                     Save
                 </button>
             </div>

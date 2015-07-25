@@ -1,15 +1,15 @@
 angular.module('tournia.controllers', [])
 
 
-.controller('MatchesCtrl', function($scope, Matches, $ionicModal, $http, $stateParams) {
+.controller('MatchesCtrl', function($scope, Matches, $ionicModal, $http, $stateParams, Tournaments, Matches) {
     $scope.doRefresh = function() {
         self.updateView();
     };
 
-    $http.get(apiUrl +'/'+ $stateParams.tournamentUrl +'/tournament').
-    success(function(data, status, headers, config) {
-        $scope.isLiveScoreAllowed = false;
-        $scope.isLive2ndCallAllowed = false;
+    Tournaments.getCurrentTournament().then(function(tournament){
+        $scope.isLiveScoreAllowed = tournament.isLiveScoreAllowed;
+        $scope.isLive2ndCallAllowed = tournament.isLive2ndCallAllowed;
+        $scope.currentTournament = tournament;
     });
 
     self.updateView = function() {
@@ -64,7 +64,14 @@ angular.module('tournia.controllers', [])
         $scope.matchModal = modal;
     });
     $scope.openScoreModal = function(match) {
+        // define sets
+        $scope.scoreModalSets = {};
+        for(setNr = 1; setNr <= $scope.currentTournament.nrSets ; setNr++) {
+            $scope.scoreModalSets[setNr] = {team1: null, team2: null};
+        }
+
         $scope.matchModal.show();
+        $scope.matchModalMatch = match;
     };
     $scope.closeModal = function() {
         $scope.matchModal.hide();
@@ -77,6 +84,22 @@ angular.module('tournia.controllers', [])
     $scope.$on('modal.hidden', function() {
         // Execute action
     });
+
+    $scope.sendScoreModal = function(match) {
+        for(setNr in $scope.scoreModalSets) {
+            if (!Matches.checkScore($scope.currentTournament, $scope.scoreModalSets[setNr].team1, $scope.scoreModalSets[setNr].team2)) {
+                confirmMsg = 'Set %setNr% is an incorrect score, do you want to continue saving it?';
+                if (!confirm(confirmMsg.replace('%setNr%', setNr))) {
+                    return;
+                }
+            }
+        }
+        Matches.sendScore($scope.currentTournament, match, $scope.scoreModalSets).then(function(data){
+            alert(data);
+            self.updateView();
+        });
+        $scope.matchModal.hide();
+    }
 
 })
 
@@ -220,16 +243,15 @@ angular.module('tournia.controllers', [])
         });
 })
 
-.controller('InfoCtrl', function($scope, $stateParams, $localstorage, $http, $ionicLoading) {
+.controller('InfoCtrl', function($scope, $stateParams, $localstorage, $http, $ionicLoading, Tournaments) {
     $ionicLoading.show({
         templateUrl: 'templates/loadingPane.html'
     });
 
-    $http.get(apiUrl +'/'+ $stateParams.tournamentUrl +'/tournament').
-        success(function(data, status, headers, config) {
-            $scope.tournament = data;
-            $ionicLoading.hide();
-        });
+    Tournaments.getCurrentTournament().then(function(tournament){
+        $scope.tournament = tournament;
+        $ionicLoading.hide();
+    });
 })
 
 .controller('TabsController', function($scope, $stateParams) {

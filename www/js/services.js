@@ -31,6 +31,30 @@ angular.module('tournia.services', [])
     };
 })
 
+.factory('Tournaments', function($http, $stateParams, $q) {
+
+    var currentTournament = null;
+
+    return {
+        getTournament: function(tournamentUrl) {
+            var deferred = $q.defer();
+            $http.get(apiUrl +'/'+ tournamentUrl +'/tournament').success(function(data){
+                deferred.resolve(data);
+            });
+            return deferred.promise;
+        },
+        getCurrentTournament: function () {
+            if (currentTournament == null) {
+                currentTournament = this.getTournament($stateParams.tournamentUrl);
+            }
+            return currentTournament;
+        },
+        setCurrentTournament: function(value) {
+            currentTournament = value;
+        }
+    };
+})
+
     .factory('Matches', function($http, $stateParams, $q) {
 
         return {
@@ -68,6 +92,57 @@ angular.module('tournia.services', [])
                     deferred.resolve(data);
                 }).error(function(){
                     deferred.reject("An error occurred while fetching items");
+                });
+                return deferred.promise;
+            },
+            checkScore: function(tournament, scoreTeam1, scoreTeam2) {
+                correctScore = true;
+
+                if (correctScore && (isNaN(scoreTeam1) || isNaN(scoreTeam2))) {
+                    correctScore = false;
+                }
+
+                if (tournament.checkScoreMin != null) {
+                    if (correctScore && (scoreTeam1 < tournament.checkScoreMin || scoreTeam2 < tournament.checkScoreMin)) {
+                        correctScore = false;
+                    }
+                }
+
+                if (tournament.checkScoreMax != null) {
+                    if (correctScore && (scoreTeam1 > tournament.checkScoreMax || scoreTeam2 > tournament.checkScoreMax)) {
+                        correctScore = false;
+                    }
+                }
+
+                return correctScore;
+            },
+            sendScore: function(tournament, match, score) {
+                var scorePost = new Array();
+                for (setNr in score) {
+                    if (score[setNr].team1 != null || score[setNr].team2 != null) {
+                        scoreSet = new Array(score[setNr].team1, score[setNr].team2);
+                        scorePost.push(scoreSet);
+                    }
+                }
+
+                var postData = {
+                    matchId: match.matchId,
+                    score: scorePost,
+                }
+
+                var deferred = $q.defer();
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    data: postData,
+                    url: apiUrl +'/'+ tournament.url +'/matches/score',
+                    dataType: 'json',
+                    success: function(data1) {
+                        $http.post(apiUrl +'/'+ $stateParams.tournamentUrl +'/matches/finish', {matchId:match.matchId}).success(function(data2){
+                            deferred.resolve(data1);
+                        });
+
+                    },
                 });
                 return deferred.promise;
             }
