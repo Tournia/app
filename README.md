@@ -39,7 +39,7 @@ $ ionic lib update
 For more options, check out [the docs](http://ionicframework.com/docs/cli/).
 
 ## Demo
-http://www.tournia.net
+http://www.tournia.net/live or download the app from http://www.tournia.net/app
 
 ## Issues
 Pull requests are welcome here!
