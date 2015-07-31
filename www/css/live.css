@@ -63,6 +63,7 @@ a:focus {
 }
 a.colorLink {
   color: #6bb50b;
+  cursor: pointer;
 }
 /* ==========================================================================
    1 Bootstrap overrides

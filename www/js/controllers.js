@@ -281,10 +281,15 @@ angular.module('tournia.controllers', [])
         });
 })
 
-.controller('InfoCtrl', function($scope, $stateParams, $localstorage, $http, $ionicLoading, Tournaments) {
+.controller('InfoCtrl', function($scope, $stateParams, $localstorage, $http, $ionicLoading, Tournaments, $stateParams, $cordovaInAppBrowser) {
     $ionicLoading.show({
         templateUrl: 'templates/loadingPane.html'
     });
+
+    $scope.openDesktopSite = function(url) {
+        url = $scope.desktopUrl + $stateParams.tournamentUrl;
+        $cordovaInAppBrowser.open(url, '_system');
+    }
 
     Tournaments.getCurrentTournament().then(function(tournament){
         $scope.tournament = tournament;
