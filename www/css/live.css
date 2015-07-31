@@ -607,7 +607,6 @@ h2.table-title {
   background: -o-linear-gradient(top, #f3f2f0, transparent);
 }
 #current-matches-table .actions {
-  width: 120px;
   text-align: right;
 }
 #current-matches-table .actions button {
@@ -627,10 +626,10 @@ h2.table-title {
   top: 7px;
   line-height: 15px;
 }
-#scoreModal span.player {
+.matchModal span.player {
   display: block;
 }
-#scoreModal .scoreModalSets {
+.matchModal .scoreModalSets {
   width: 200px;
   padding: 10px;
 }

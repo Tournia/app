@@ -65,6 +65,9 @@
                             <button class="button button-balanced" ng-click="openScoreModal(match)" ng-if="match.matchId > 0 && isLiveScoreAllowed">
                                 Enter score
                             </button>
+                            <button class="button button-balanced" ng-click="openSecondCallModal(match)" ng-if="match.matchId > 0 && isLive2ndCallAllowed">
+                                2nd Call
+                            </button>
                         </td>
                     </tr>
                     </tbody>
@@ -110,7 +113,7 @@
 </ion-view>
 
 <script id="score-modal.html" type="text/ng-template">
-    <ion-modal-view id="scoreModal">
+    <ion-modal-view class="matchModal">
         <ion-header-bar>
             <h1 class="title">Match scoring</h1>
             <button class="button button-clear pull-right" ng-click="closeModal()">
@@ -121,17 +124,17 @@
             <table class="table">
                 <tbody>
                 <tr>
-                    <th>Match {{matchModalMatch.localId}}</th>
-                    <th>{{matchModalMatch.round}}</th>
-                    <th>{{matchModalMatch.discipline}}</th>
+                    <th>Match {{modalMatch.localId}}</th>
+                    <th>{{modalMatch.round}}</th>
+                    <th>{{modalMatch.discipline}}</th>
                 </tr>
                 <tr>
                     <td>
-                        <span class="player" ng-repeat="player in matchModalMatch.team1Players">{{player}}</span>
+                        <span class="player" ng-repeat="player in modalMatch.team1Players">{{player}}</span>
                     </td>
                     <td>vs</td>
                     <td>
-                        <span class="player" ng-repeat="player in matchModalMatch.team2Players">{{player}}</span>
+                        <span class="player" ng-repeat="player in modalMatch.team2Players">{{player}}</span>
                     </td>
                 </tr>
                 </tbody>
@@ -149,8 +152,60 @@
                 <button class="button pull-right" ng-click="closeModal()">
                     Cancel
                 </button> &nbsp;
-                <button class="button button-positive pull-right icon-left ion-edit" ng-click="sendScoreModal(matchModalMatch)">
+                <button class="button button-positive pull-right icon-left ion-edit" ng-click="sendScoreModal(modalMatch)">
                     Save
+                </button>
+            </div>
+        </ion-footer-bar>
+    </ion-modal-view>
+</script>
+
+<script id="secondCall-modal.html" type="text/ng-template">
+    <ion-modal-view class="matchModal">
+        <ion-header-bar>
+            <h1 class="title">2nd Call</h1>
+            <button class="button button-clear pull-right" ng-click="closeModal()">
+                ×
+            </button>
+        </ion-header-bar>
+        <ion-content>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Match {{modalMatch.localId}}</th>
+                    <th>{{modalMatch.round}}</th>
+                    <th>{{modalMatch.discipline}}</th>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="player" ng-repeat="player in modalMatch.team1">
+                            <label>
+                                <input type="checkbox" ng-model="player.secondCall">
+                                {{player.name}}
+                            </label>
+                        </span>
+                    </td>
+                    <td>vs</td>
+                    <td>
+                        <span class="player" ng-repeat="player in modalMatch.team2">
+                            <label>
+                                <input type="checkbox" ng-model="player.secondCall">
+                                {{player.name}}
+                            </label>
+                        </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <p>Select the players that should have a 2<sup>nd</sup> call; these will be displayed on the organization's announcements page.</p>
+        </ion-content>
+        <ion-footer-bar>
+            <div class="buttons pull-right">
+                <button class="button pull-right" ng-click="closeModal()">
+                    Cancel
+                </button> &nbsp;
+                <button class="button button-positive pull-right icon-left ion-bullhorn" ng-click="sendSecondCallModal(modalMatch)">
+                    2nd Call
                 </button>
             </div>
         </ion-footer-bar>

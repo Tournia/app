@@ -61,7 +61,7 @@ angular.module('tournia.controllers', [])
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function(modal) {
-        $scope.matchModal = modal;
+        $scope.scoreModal = modal;
     });
     $scope.openScoreModal = function(match) {
         // define sets
@@ -70,15 +70,47 @@ angular.module('tournia.controllers', [])
             $scope.scoreModalSets[setNr] = {team1: null, team2: null};
         }
 
-        $scope.matchModal.show();
-        $scope.matchModalMatch = match;
+        $scope.scoreModal.show();
+        $scope.modalMatch = match;
     };
+    // Second call modal //
+    $ionicModal.fromTemplateUrl('secondCall-modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.secondCallModal = modal;
+    });
+    $scope.openSecondCallModal = function(match) {
+        // define secondCall in players
+        match.team1 = {};
+        for (playerId in match.team1Players) {
+            match.team1[playerId] = {
+                playerId: playerId,
+                name: match.team1Players[playerId],
+                secondCall: false,
+            }
+        }
+        match.team2 = {};
+        for (playerId in match.team2Players) {
+            match.team2[playerId] = {
+                playerId: playerId,
+                name: match.team2Players[playerId],
+                secondCall: false,
+            }
+        }
+
+        $scope.secondCallModal.show();
+        $scope.modalMatch = match;
+    };
+    // Other modal functions //
     $scope.closeModal = function() {
-        $scope.matchModal.hide();
+        $scope.scoreModal.hide();
+        $scope.secondCallModal.hide();
     };
     //Cleanup the modal when we're done with it!
     $scope.$on('$destroy', function() {
-        $scope.matchModal.remove();
+        $scope.scoreModal.remove();
+        $scope.secondCallModal.remove();
     });
     // Execute action on hide modal
     $scope.$on('modal.hidden', function() {
@@ -98,7 +130,13 @@ angular.module('tournia.controllers', [])
             alert(data);
             self.updateView();
         });
-        $scope.matchModal.hide();
+        $scope.scoreModal.hide();
+    }
+    $scope.sendSecondCallModal = function(match) {
+        Matches.sendSecondCall($scope.currentTournament, match).then(function(data){
+            alert(data);
+        });
+        $scope.secondCallModal.hide();
     }
 
 })

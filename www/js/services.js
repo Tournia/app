@@ -145,6 +145,37 @@ angular.module('tournia.services', [])
                     },
                 });
                 return deferred.promise;
+            },
+            sendSecondCall: function(tournament, match) {
+                var playerIds = new Array();
+                for (playerId in match.team1) {
+                    if (match.team1[playerId].secondCall) {
+                        playerIds.push(playerId);
+                    }
+                }
+                for (playerId in match.team2) {
+                    if (match.team2[playerId].secondCall) {
+                        playerIds.push(playerId);
+                    }
+                }
+
+                var postData = {
+                    matchId: match.matchId,
+                    playerIds: playerIds,
+                }
+
+                var deferred = $q.defer();
+                $.ajax({
+                    type: 'POST',
+                    cache: false,
+                    data: postData,
+                    url: apiUrl +'/'+ tournament.url +'/matches/secondcall',
+                    dataType: 'json',
+                    success: function(data1) {
+                        deferred.resolve(data1);
+                    },
+                });
+                return deferred.promise;
             }
         };
     })
