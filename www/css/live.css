@@ -50,7 +50,7 @@ main {
 }
 a,
 a:link {
-  color: #6bb50b;
+  color: #333333;
 }
 a.themecolor,
 a.themecolor:link {
@@ -60,6 +60,9 @@ a:hover,
 a:focus {
   color: inherit;
   text-decoration: inherit;
+}
+a.colorLink {
+  color: #6bb50b;
 }
 /* ==========================================================================
    1 Bootstrap overrides
