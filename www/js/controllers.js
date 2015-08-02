@@ -259,8 +259,8 @@ angular.module('tournia.controllers', [])
 
     // Handles incoming device tokens
     $rootScope.$on('$cordovaPush:tokenReceived', function(event, data) {
-        alert("Successfully registered token " + data.token);
-        console.log('Ionic Push: Got token ', data.token, data.platform);
+        //alert("Successfully registered token " + data.token);
+        //console.log('Ionic Push: Got token ', data.token, data.platform);
         $scope.token = data.token;
     });
 
@@ -303,17 +303,24 @@ angular.module('tournia.controllers', [])
 
 
 .controller('SettingsController', function($scope, Settings, $rootScope) {;
-        $scope.setNotificationsEnabled = function(enabled) {
-        Settings.setNotificationsEnabled(enabled).then(function(data){
-            console.log("successfully enabled");
-            //$scope.searchMatches = data;
-            //$scope.isLoading = false;
-        });
+    $scope.setNotificationsEnabled = function(enabled) {
+        Settings.setNotificationsEnabled(enabled);
     }
-    $scope.notificationsNextMatch = 3;
-    $scope.setNotificationsNextMatch = function(period) {
-        Settings.setNotificationsNextMatch(period);
+    $scope.setNotificationsUpcomingMatch = function(period) {
+        Settings.setNotificationsUpcomingMatch(period);
     }
+
+    $scope.setNotificationsScoreMatch = function(enabled) {
+        Settings.setNotificationsScoreMatch(enabled);
+    }
+
+    $scope.setNotificationsNewMatch = function(enabled) {
+        Settings.setNotificationsNewMatch(enabled);
+    }
+
+    Settings.getNotifications().then(function(notifications){
+        $scope.notifications = notifications;
+    });
 
     /*
     $scope.identifyUser = function() {

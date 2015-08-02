@@ -21,31 +21,52 @@
             <li class="item item-toggle">
                 Receive notifications
                 <label class="toggle toggle-balanced">
-                    <input type="checkbox" ng-model="settings.notificationsEnabled" ng-change="setNotificationsEnabled(settings.notificationsEnabled)">
+                    <input type="checkbox" ng-model="notifications.enabled" ng-change="setNotificationsEnabled(notifications.enabled)">
                     <div class="track">
                         <div class="handle"></div>
                     </div>
                 </label>
             </li>
 
-            <li class="item item-divider" ng-if="settings.notificationsEnabled">
+            <li class="item item-divider" ng-if="notifications.enabled">
                 Matches notifications
             </li>
 
-            <li class="item item-input item-select" ng-if="settings.notificationsEnabled">
+            <li class="item item-input item-select" ng-if="notifications.enabled">
                 <div class="input-label">
-                    About next match
+                    Upcoming match
                 </div>
-                <select ng-model="notificationsNextMatch" ng-change="setNotificationsNextMatch(notificationsNextMatch)">
-                    <option value="-1" ng-selected="notificationsNextMatch == -1">Never</option>
-                    <option value="5" ng-selected="notificationsNextMatch == 5">5 matches before</option>
-                    <option value="4" ng-selected="notificationsNextMatch == 4">4 matches before</option>
-                    <option value="3" ng-selected="notificationsNextMatch == 3">3 matches before</option>
-                    <option value="2" ng-selected="notificationsNextMatch == 2">2 matches before</option>
-                    <option value="1" ng-selected="notificationsNextMatch == 1">1 matches before</option>
-                    <option value="0" ng-selected="notificationsNextMatch == 0">0 matches before</option>
+                <select ng-model="notifications.upcomingMatch" ng-change="setNotificationsUpcomingMatch(notifications.upcomingMatch)">
+                    <option value="-1" ng-selected="notifications.upcomingMatch == -1">Never</option>
+                    <option value="5" ng-selected="notifications.upcomingMatch == 5">5 matches before</option>
+                    <option value="4" ng-selected="notifications.upcomingMatch == 4">4 matches before</option>
+                    <option value="3" ng-selected="notifications.upcomingMatch == 3">3 matches before</option>
+                    <option value="2" ng-selected="notifications.upcomingMatch == 2">2 matches before</option>
+                    <option value="1" ng-selected="notifications.upcomingMatch == 1">1 matches before</option>
+                    <option value="0" ng-selected="notifications.upcomingMatch == 0">0 matches before</option>
                 </select>
             </li>
+
+            <li class="item item-toggle" ng-if="notifications.enabled">
+                Update match score
+                <label class="toggle toggle-balanced">
+                    <input type="checkbox" ng-model="notifications.scoreMatch" ng-change="setNotificationsScoreMatch(notifications.scoreMatch)">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </li>
+
+            <li class="item item-toggle" ng-if="notifications.enabled">
+                New match created
+                <label class="toggle toggle-balanced">
+                    <input type="checkbox" ng-model="notifications.newMatch" ng-change="setNotificationsNewMatch(notifications.newMatch)">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </li>
+
 
 
 

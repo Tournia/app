@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'tournia.services' is found in services.js
 // 'tournia.controllers' is found in controllers.js
-angular.module('tournia', ['ionic', 'tournia.controllers', 'tournia.services', 'http-auth-interceptor', 'ngCordova', 'ionic.service.core', 'ionic.service.push'])
+angular.module('tournia', ['ionic','ionic.service.core','ionic.service.push','ngCordova', 'tournia.controllers', 'tournia.services', 'http-auth-interceptor'])
 
 .run(function($ionicPlatform, $rootScope, $injector, authService, $localstorage, $http) {
     $rootScope.$on('event:auth-loginRequired', function(event, data){
@@ -170,7 +170,7 @@ angular.module('tournia', ['ionic', 'tournia.controllers', 'tournia.services', '
         app_id: 'd27f8b9e',
         // The public API key all services will use for this app
         api_key: '395de2625c7d8c446f1c26dd715585b37f301e28da8b7719',
-        dev_push: true
+        dev: false
     });
 }])
 

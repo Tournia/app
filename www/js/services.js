@@ -195,10 +195,46 @@ angular.module('tournia.services', [])
                 return deferred.promise;
             },
 
-            setNotificationsNextMatch: function(period) {
+            setNotificationsUpcomingMatch: function(period) {
                 var deferred = $q.defer();
                 this.getDeviceToken().then(function(deviceToken){
-                    $http.post(apiUrl +'/notifications/nextmatch', {platform:'iOS', deviceToken: deviceToken, period: period}).success(function(data){
+                    $http.post(apiUrl +'/notifications/upcomingmatch', {platform:'iOS', deviceToken: deviceToken, period: period}).success(function(data){
+                        deferred.resolve(data);
+                    }).error(function(){
+                        deferred.reject("An error occurred while fetching items");
+                    });
+                });
+                return deferred.promise;
+            },
+
+            setNotificationsScoreMatch: function(enabled) {
+                var deferred = $q.defer();
+                this.getDeviceToken().then(function(deviceToken){
+                    $http.post(apiUrl +'/notifications/scorematch', {platform:'iOS', deviceToken: deviceToken, enabled: enabled}).success(function(data){
+                        deferred.resolve(data);
+                    }).error(function(){
+                        deferred.reject("An error occurred while fetching items");
+                    });
+                });
+                return deferred.promise;
+            },
+
+            setNotificationsNewMatch: function(enabled) {
+                var deferred = $q.defer();
+                this.getDeviceToken().then(function(deviceToken){
+                    $http.post(apiUrl +'/notifications/newmatch', {platform:'iOS', deviceToken: deviceToken, enabled: enabled}).success(function(data){
+                        deferred.resolve(data);
+                    }).error(function(){
+                        deferred.reject("An error occurred while fetching items");
+                    });
+                });
+                return deferred.promise;
+            },
+
+            getNotifications: function() {
+                var deferred = $q.defer();
+                this.getDeviceToken().then(function(deviceToken){
+                    $http.get(apiUrl +'/notifications/'+ deviceToken).success(function(data){
                         deferred.resolve(data);
                     }).error(function(){
                         deferred.reject("An error occurred while fetching items");
