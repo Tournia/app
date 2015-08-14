@@ -234,6 +234,8 @@ angular.module('tournia.controllers', [])
             success(function(data, status, headers, config) {
                 $localstorage.setObject('oauth', data);
 
+                $http.defaults.headers.common.Authorization = "Bearer "+ data.access_token;
+
                 // retry requests with new token
                 authService.loginConfirmed('success', function(config){
                     config.headers["Authorization"] = "Bearer "+ data.access_token;
