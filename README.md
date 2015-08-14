@@ -12,6 +12,7 @@ $ npm install
 
 To install lib libraries
 ```bash
+$ npm install -g bower
 $ bower update
 ```
 
