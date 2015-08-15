@@ -270,12 +270,18 @@ angular.module('tournia.controllers', [])
 })
 
 .controller('TournamentsCtrl', function($scope, $localstorage, $http, $rootScope) {
-    if ($rootScope.isLoggedin) {
+    updateMyTournaments = function() {
         $http.get(apiUrl +'/mytournaments').
-            success(function(data, status, headers, config) {
-                $scope.mytournaments = data;
-            });
+        success(function(data, status, headers, config) {
+            $scope.mytournaments = data;
+        });
     }
+    if ($rootScope.isLoggedin) {
+        self.updateMyTournaments();
+    }
+    $rootScope.$on('event:auth-loginConfirmed', function(event, data){
+        self.updateMyTournaments();
+    });
 
     $http.get(apiUrl +'/tournaments').
         success(function(data, status, headers, config) {
@@ -320,8 +326,16 @@ angular.module('tournia.controllers', [])
         Settings.setNotificationsNewMatch(enabled);
     }
 
-    Settings.getNotifications().then(function(notifications){
-        $scope.notifications = notifications;
+    updateSettings = function() {
+        Settings.getNotifications().then(function(notifications){
+            $scope.notifications = notifications;
+        });
+    }
+    if ($rootScope.isLoggedin) {
+        self.updateSettings();
+    }
+    $rootScope.$on('event:auth-loginConfirmed', function(event, data){
+        self.updateSettings();
     });
 
     /*
