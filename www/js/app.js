@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'tournia.services' is found in services.js
 // 'tournia.controllers' is found in controllers.js
-angular.module('tournia', ['ionic','ionic.service.core','ionic.service.push','ngCordova', 'tournia.controllers', 'tournia.services', 'http-auth-interceptor'])
+angular.module('tournia', ['ionic','ionic.service.core','ionic.service.push','ionic.service.deploy','ngCordova', 'tournia.controllers', 'tournia.services', 'tournia.deploy', 'http-auth-interceptor'])
 
 .run(function($ionicPlatform, $rootScope, $injector, authService, $localstorage, $http) {
     $rootScope.$on('event:auth-loginRequired', function(event, data){

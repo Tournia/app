@@ -2,14 +2,15 @@
   "name": "tournia",
   "private": "true",
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.0.0-rc.0",
-    "ngCordova": "~0.1.17-alpha",
-    "ionic-service-core": "~0.1.9",
-    "ionic-service-push": "~0.1.12"
+    "ionic": "driftyco/ionic-bower#1.0.0",
+    "ngCordova": "latest",
+    "ionic-service-core": "latest",
+    "ionic-service-push": "latest",
+    "ionic-service-deploy": "latest"
   },
   "dependencies": {
-    "bootstrap-sass": "~3.3.4",
-    "angular-http-auth": "~1.2.2",
-    "angular-websocket": "~1.0.13"
+    "bootstrap-sass": "latest",
+    "angular-http-auth": "latest",
+    "angular-websocket": "latest"
   }
 }
