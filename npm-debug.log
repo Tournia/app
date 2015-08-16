@@ -1,0 +1,38 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '-g', 'zipalign' ]
+2 info using npm@2.11.3
+3 info using node@v0.12.7
+4 verbose install initial load of /usr/local/lib/package.json
+5 verbose readDependencies loading dependencies from /usr/local/lib/package.json
+6 silly cache add args [ 'zipalign', null ]
+7 verbose cache add spec zipalign
+8 silly cache add parsed spec { raw: 'zipalign',
+8 silly cache add   scope: null,
+8 silly cache add   name: null,
+8 silly cache add   rawSpec: 'zipalign',
+8 silly cache add   spec: '/Users/sjoerdsmink/Sites/tournia-repo/external/app/zipalign',
+8 silly cache add   type: 'local' }
+9 silly addLocalTarball shasum (computed) af3417aec2a291fedac16e05cfd88c1036539101
+10 verbose addTmpTarball /Users/sjoerdsmink/Sites/tournia-repo/external/app/zipalign not in flight; adding
+11 verbose addTmpTarball validating metadata from /Users/sjoerdsmink/Sites/tournia-repo/external/app/zipalign
+12 verbose tar unpack /Users/sjoerdsmink/Sites/tournia-repo/external/app/zipalign
+13 verbose tar unpacking to /tmp/npm-66928-e639d2be/unpack-f067a51b957c
+14 silly gentlyRm /tmp/npm-66928-e639d2be/unpack-f067a51b957c is being purged
+15 verbose gentlyRm don't care about contents; nuking /tmp/npm-66928-e639d2be/unpack-f067a51b957c
+16 silly gunzTarPerm modes [ '755', '644' ]
+17 error not a package /Users/sjoerdsmink/Sites/tournia-repo/external/app/zipalign
+18 error addLocal Could not install /Users/sjoerdsmink/Sites/tournia-repo/external/app/zipalign
+19 verbose stack Error: ENOENT, open '/tmp/npm-66928-e639d2be/unpack-f067a51b957c/package.json'
+19 verbose stack     at Error (native)
+20 verbose cwd /Users/sjoerdsmink/Sites/tournia-repo/external/app
+21 error Darwin 14.4.0
+22 error argv "node" "/usr/local/bin/npm" "install" "-g" "zipalign"
+23 error node v0.12.7
+24 error npm  v2.11.3
+25 error path /tmp/npm-66928-e639d2be/unpack-f067a51b957c/package.json
+26 error code ENOENT
+27 error errno -2
+28 error enoent ENOENT, open '/tmp/npm-66928-e639d2be/unpack-f067a51b957c/package.json'
+28 error enoent This is most likely not a problem with npm itself
+28 error enoent and is related to npm not being able to find a file.
+29 verbose exit [ -2, true ]
