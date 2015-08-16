@@ -49,5 +49,9 @@
             have templates inline in this html file if you'd like).
         -->
         <ion-nav-view></ion-nav-view>
+        <div class="bar bar-footer bar-assertive" ng-if="hasUpdate">
+            <div class="title" ng-if="!updateText" ng-click="doUpdate()">Update available, press to install</div>
+            <div class="title" ng-if="updateText">{{updateText}}</div>
+        </div>
     </body>
 </html>

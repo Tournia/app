@@ -163,17 +163,6 @@ angular.module('tournia', ['ionic','ionic.service.core','ionic.service.push','io
 
 })
 
-.config(['$ionicAppProvider', function($ionicAppProvider) {
-    // Identify app
-    $ionicAppProvider.identify({
-        // The App ID (from apps.ionic.io) for the server
-        app_id: 'd27f8b9e',
-        // The public API key all services will use for this app
-        api_key: '395de2625c7d8c446f1c26dd715585b37f301e28da8b7719',
-        dev: false
-    });
-}])
-
 .config(['$locationProvider', function($locationProvider) {
     $locationProvider.html5Mode(webMode);
 }]);

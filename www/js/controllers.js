@@ -269,7 +269,7 @@ angular.module('tournia.controllers', [])
     $rootScope.tournamentUrl = $stateParams.tournamentUrl;
 })
 
-.controller('TournamentsCtrl', function($scope, $localstorage, $http, $rootScope) {
+.controller('TournamentsCtrl', function($scope, $localstorage, $http, $rootScope, $ionicDeploy) {
     updateMyTournaments = function() {
         $http.get(apiUrl +'/mytournaments').
         success(function(data, status, headers, config) {
@@ -287,6 +287,36 @@ angular.module('tournia.controllers', [])
         success(function(data, status, headers, config) {
             $scope.alltournaments = data;
         });
+
+
+    // Update app code with new release from Ionic Deploy
+    $rootScope.doUpdate = function() {
+        $rootScope.updateText = "Downloading";
+        // Download the updates
+        $ionicDeploy.download().then(function() {
+            // Extract the updates
+            $ionicDeploy.extract().then(function() {
+                // Load the updated version
+                $rootScope.updateText = null;
+                $ionicDeploy.load();
+            }, function(error) {
+                // Error extracting
+            }, function(progress) {
+                // Do something with the zip extraction progress
+                $rootScope.updateText = "Extracting: "+ progress +"%";
+            });
+        }, function(error) {
+            // Error downloading the updates
+        }, function(progress) {
+            // Do something with the download progress
+            $rootScope.updateText = "Downloading: "+ progress +"%";
+        });
+    };
+    // Check Ionic Deploy for new code
+    $ionicDeploy.watch().then(function() {}, function() {}, function(hasUpdate) {
+        console.log('Ionic Deploy: Update available: ' + hasUpdate);
+        $rootScope.hasUpdate = hasUpdate;
+    });
 })
 
 .controller('InfoCtrl', function($scope, $stateParams, $localstorage, $http, $ionicLoading, Tournaments, $stateParams, $cordovaInAppBrowser) {
