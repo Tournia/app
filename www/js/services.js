@@ -268,7 +268,7 @@ angular.module('tournia.services', [])
                         }
                     }).then(function(deviceToken) {
                         deferred.resolve(deviceToken);
-                        $localstorage.set('deviceToken', deviceToken)
+                        $localstorage.set('deviceToken', deviceToken);
                     });
                 }
 

@@ -185,7 +185,7 @@ angular.module('tournia.controllers', [])
     }
 })
 
-.controller('AppCtrl', function($scope, $ionicModal, $http, $ionicPopup, $localstorage, authService, $rootScope, $stateParams) {
+.controller('AppCtrl', function($scope, $ionicModal, $http, $ionicPopup, $localstorage, authService, $rootScope, $stateParams, Settings) {
     // Form data for the login modal
     $scope.loginData = {};
 
@@ -243,6 +243,9 @@ angular.module('tournia.controllers', [])
                 })
 
                 $scope.closeLogin();
+
+                // request permission for notifications and send deviceToken to API
+                Settings.getNotifications();
             }).
             error(function(data, status, headers, config) {
                 console.error('Error while fetching oauth token');
