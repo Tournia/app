@@ -314,8 +314,10 @@ angular.module('tournia.controllers', [])
     };
     // Check Ionic Deploy for new code
     $ionicDeploy.watch().then(function() {}, function() {}, function(hasUpdate) {
-        console.log('Ionic Deploy: Update available: ' + hasUpdate);
         $rootScope.hasUpdate = hasUpdate;
+        if (hasUpdate) {
+            console.log('Ionic Deploy: Update available: ' + hasUpdate);
+        }
     });
 })
 
