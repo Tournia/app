@@ -250,7 +250,7 @@ angular.module('tournia.services', [])
                         console.log("get notifications = "+ status);
                         deferred.resolve(data);
                     }).error(function(){
-                        $http.post(apiUrl +'/notifications/'+ deviceToken, {platform: 'iOS'}).success(function(data){
+                        $http.post(apiUrl +'/notifications/'+ deviceToken, {platform: ionic.Platform.platform()}).success(function(data){
                             deferred.resolve(data);
                         }).error(function(){
                             deferred.reject("An error occurred while fetching items");
