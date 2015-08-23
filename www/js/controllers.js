@@ -361,6 +361,10 @@ angular.module('tournia.controllers', [])
         Settings.setNotificationsNewMatch(enabled);
     }
 
+    $scope.setNotificationsStartMatch = function(enabled) {
+        Settings.setNotificationsStartMatch(enabled);
+    }
+
     updateSettings = function() {
         Settings.getNotifications().then(function(notifications){
             $scope.notifications = notifications;

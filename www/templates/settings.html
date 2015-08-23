@@ -32,6 +32,16 @@
                 Matches notifications
             </li>
 
+            <li class="item item-toggle" ng-if="notifications.enabled">
+                New match created
+                <label class="toggle toggle-balanced">
+                    <input type="checkbox" ng-model="notifications.newMatch" ng-change="setNotificationsNewMatch(notifications.newMatch)">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
+            </li>
+
             <li class="item item-input item-select" ng-if="notifications.enabled">
                 <div class="input-label">
                     Upcoming match
@@ -43,8 +53,17 @@
                     <option value="3" ng-selected="notifications.upcomingMatch == 3">3 matches before</option>
                     <option value="2" ng-selected="notifications.upcomingMatch == 2">2 matches before</option>
                     <option value="1" ng-selected="notifications.upcomingMatch == 1">1 matches before</option>
-                    <option value="0" ng-selected="notifications.upcomingMatch == 0">0 matches before</option>
                 </select>
+            </li>
+
+            <li class="item item-toggle" ng-if="notifications.enabled">
+                Start of match
+                <label class="toggle toggle-balanced">
+                    <input type="checkbox" ng-model="notifications.startMatch" ng-change="setNotificationsStartMatch(notifications.startMatch)">
+                    <div class="track">
+                        <div class="handle"></div>
+                    </div>
+                </label>
             </li>
 
             <li class="item item-toggle" ng-if="notifications.enabled">
@@ -56,19 +75,6 @@
                     </div>
                 </label>
             </li>
-
-            <li class="item item-toggle" ng-if="notifications.enabled">
-                New match created
-                <label class="toggle toggle-balanced">
-                    <input type="checkbox" ng-model="notifications.newMatch" ng-change="setNotificationsNewMatch(notifications.newMatch)">
-                    <div class="track">
-                        <div class="handle"></div>
-                    </div>
-                </label>
-            </li>
-
-
-
 
         </ul>
 

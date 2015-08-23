@@ -231,6 +231,18 @@ angular.module('tournia.services', [])
                 return deferred.promise;
             },
 
+            setNotificationsStartMatch: function(enabled) {
+                var deferred = $q.defer();
+                this.getDeviceToken().then(function(deviceToken){
+                    $http.post(apiUrl +'/notifications/'+ deviceToken +'/startmatch', {enabled: enabled}).success(function(data){
+                        deferred.resolve(data);
+                    }).error(function(){
+                        deferred.reject("An error occurred while fetching items");
+                    });
+                });
+                return deferred.promise;
+            },
+
             getNotifications: function() {
                 var deferred = $q.defer();
                 this.getDeviceToken().then(function(deviceToken){
