@@ -144,18 +144,18 @@ angular.module('tournia.controllers', [])
 
 
 .controller('RankingsCtrl', function($scope, Rankings) {
-    Rankings.getDisciplines().then(function(data){
-            $scope.disciplines = data;
+    Rankings.getPools().then(function(data){
+            $scope.pools = data;
         });
 
-    var selectedDisciplineId = 0;
-    $scope.selectedDiscipline = "Select discipline";
-    $scope.showRanking = function(disciplineId, disciplineName) {
+    var selectedPoolId = 0;
+    $scope.selectedPool = "Select pool";
+    $scope.showRanking = function(poolId, poolName) {
         $scope.isLoading = true;
-        selectedDisciplineId = disciplineId;
+        selectedPoolId = poolId;
 
-        $scope.selectedDiscipline = disciplineName;
-        Rankings.get(disciplineId).then(function(data){
+        $scope.selectedPool = poolName;
+        Rankings.get(poolId).then(function(data){
             $scope.ranking = data;
             $scope.isLoading = false;
             $scope.$broadcast('scroll.refreshComplete');
@@ -163,8 +163,8 @@ angular.module('tournia.controllers', [])
     }
 
     $scope.doRefresh = function() {
-        if (selectedDisciplineId != 0) {
-            $scope.showRanking(selectedDisciplineId, $scope.selectedDiscipline);
+        if (selectedPoolId != 0) {
+            $scope.showRanking(selectedPoolId, $scope.selectedPool);
         } else {
             $scope.$broadcast('scroll.refreshComplete');
         }

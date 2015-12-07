@@ -21,8 +21,8 @@
                 <table id="upcoming-matches-table" class="table team-table">
                     <tbody>
                     <tr ng-repeat="match in upcomingMatches">
-                        <td class="discipline">
-                            {{ match.discipline }}
+                        <td class="pool">
+                            {{ match.pool }}
                         </td>
                         <td class="localId">
                             {{ match.localId }}
@@ -49,8 +49,8 @@
                             <!--         <span class="sub">court</span> -->
                             <strong>{{ match.location }}</strong>
                         </td>
-                        <td class="discipline">
-                            {{ match.discipline }}
+                        <td class="pool">
+                            {{ match.pool }}
                         </td>
                         <td class="localId">
                             {{ match.localId }}
@@ -81,8 +81,8 @@
                 <table id="finished-matches-table" class="table team-table">
                     <tbody>
                     <tr ng-repeat="match in finishedMatches">
-                        <td class="discipline">
-                            {{ match.discipline }}
+                        <td class="pool">
+                            {{ match.pool }}
                         </td>
                         <td class="localId">
                             {{ match.localId }}
@@ -126,7 +126,7 @@
                 <tr>
                     <th>Match {{modalMatch.localId}}</th>
                     <th>{{modalMatch.round}}</th>
-                    <th>{{modalMatch.discipline}}</th>
+                    <th>{{modalMatch.pool}}</th>
                 </tr>
                 <tr>
                     <td>
@@ -174,7 +174,7 @@
                 <tr>
                     <th>Match {{modalMatch.localId}}</th>
                     <th>{{modalMatch.round}}</th>
-                    <th>{{modalMatch.discipline}}</th>
+                    <th>{{modalMatch.pool}}</th>
                 </tr>
                 <tr>
                     <td>

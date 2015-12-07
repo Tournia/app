@@ -5,12 +5,12 @@ angular.module('tournia.services', [])
     return {
         apiPath:'/api/shoppingCart/',
 
-        getDisciplines: function() {
+        getPools: function() {
             //Creating a deferred object
             var deferred = $q.defer();
 
             //Calling Web API to fetch shopping cart items
-            $http.get(apiUrl +'/'+ $stateParams.tournamentUrl +'/disciplines').success(function(data){
+            $http.get(apiUrl +'/'+ $stateParams.tournamentUrl +'/pools').success(function(data){
                 //Passing data to deferred's resolve function on successful completion
                 deferred.resolve(data);
             }).error(function(){
@@ -21,9 +21,9 @@ angular.module('tournia.services', [])
             //Returning the promise object
             return deferred.promise;
         },
-        get: function(disciplineId) {
+        get: function(poolId) {
             var deferred = $q.defer();
-            $http.get(apiUrl +'/'+ $stateParams.tournamentUrl +'/ranking/discipline/'+ disciplineId).success(function(data){
+            $http.get(apiUrl +'/'+ $stateParams.tournamentUrl +'/ranking/pool/'+ poolId).success(function(data){
                 deferred.resolve(data);
             });
             return deferred.promise;

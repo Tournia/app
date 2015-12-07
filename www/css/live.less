@@ -18,7 +18,7 @@
         4.1. Select navbar
         4.2. Loadingpane
         4.3. Content tabs
-        4.4. Discipline selector
+        4.4. Pool selector
     
     5.Footer
         5.1. Main navbar
@@ -416,40 +416,40 @@
     }
 
 /* ==========================================================================
-   4.4. Discipline selector
+   4.4. Pool selector
    ========================================================================== */
 
-    #discipline-select {
+    #pool-select {
         cursor: pointer;
     }
 
         /* Current */
         /* ======================================================================== */
-        #discipline-select .current {
+        #pool-select .current {
             padding: 15px;
         }
 
-        #discipline-select .current div {
+        #pool-select .current div {
             display: table-cell;
             width: 1%;
         }
     
-        #discipline-select .current div.discipline,
-        #discipline-select .current div.poule {
+        #pool-select .current div.pool,
+        #pool-select .current div.poule {
             width: 2% !important;
         }
     
-        #discipline-select .current div small {
+        #pool-select .current div small {
             margin-right: 15px;
         }
     
         /* List */
         /* ======================================================================== */        
-        /*#discipline-select .list {
+        /*#pool-select .list {
             display: none;
         }*/
         
-        #discipline-select .list > div {
+        #pool-select .list > div {
             border-top: 1px solid @subheaderBorderColor;
             padding: 15px;
         }
@@ -535,8 +535,8 @@
 
     .team-table tr th.status,
     .team-table tr td.status,
-    .team-table tr th.discipline,
-    .team-table tr td.discipline {
+    .team-table tr th.pool,
+    .team-table tr td.pool {
         text-align: center;
         font-size: 0.85em;
     }
@@ -565,14 +565,14 @@
             margin: 0;
         }
 
-        /* Discipline */
+        /* Pool */
         /* ======================================================================== */
-        .team-table tr th.discipline,
-        .team-table tr td.discipline {
+        .team-table tr th.pool,
+        .team-table tr td.pool {
             padding: 15px 4px !important;
         }
         
-        .team-table tr td.discipline {
+        .team-table tr td.pool {
             padding: 15px 4px !important;
             color: #fff;
             background: #999;

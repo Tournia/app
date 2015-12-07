@@ -5,19 +5,19 @@
         <div class="container"><div class="col-md-12">
         <div id="rankings" class="content-tab active">
             <!-- Loadingpane for first pageload -->
-            <div id="discipline-select" class="card" ng-class="disciplineSelector ? 'on-top' : ''" ng-click="disciplineSelector = !disciplineSelector" ng-model="disciplineSelector">
+            <div id="pool-select" class="card" ng-class="poolSelector ? 'on-top' : ''" ng-click="poolSelector = !poolSelector" ng-model="poolSelector">
                 <div class="current">
-                    <div class="discipline">
-                        <small class="muted">Discipline</small>{{ selectedDiscipline }}
+                    <div class="pool">
+                        <small class="muted">Pool</small>{{ selectedPool }}
                     </div>
                     <div>
-                        <span class="caret muted pull-right" ng-class="disciplineSelector ? '' : 'caret-right'"></span>
+                        <span class="caret muted pull-right" ng-class="poolSelector ? '' : 'caret-right'"></span>
                     </div>
                 </div>
-                <div class="list" ng-show="disciplineSelector">
-                    <div ng-click="showRanking(discipline.id, discipline.name)" ng-repeat="discipline in disciplines">
+                <div class="list" ng-show="poolSelector">
+                    <div ng-click="showRanking(pool.poolId, pool.name)" ng-repeat="pool in pools">
                         <div>
-                            {{discipline.name}}
+                            {{pool.name}}
                             <a class="themecolor"><i class="glyphicon glyphicon-arrow-right pull-right"></i></a>
                         </div>
                     </div>
@@ -26,14 +26,14 @@
 
             <div class="table-wrapper">
                 <h2 class="table-title">
-                    Rankings - {{ selectedDiscipline }}
+                    Rankings - {{ selectedPool }}
                 </h2>
 
                 <div ng-include="'templates/loadingPane.html'" ng-if="isLoading"></div>
 
                 <table id="ranking-table" class="table team-table"><tbody>
                     <tr ng-repeat="rankingRow in ranking">
-                        <td class="discipline">
+                        <td class="pool">
                             # {{ rankingRow.rank }}
                         </td>
                         <td class="team">
@@ -50,7 +50,7 @@
                     </tr>
                 </tbody></table>
                 <div ng-if="ranking.length == 0">
-                    There are no teams in this discipline.
+                    There are no teams in this pool.
                 </div>
             </div>
         </div>
