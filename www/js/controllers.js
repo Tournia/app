@@ -1,7 +1,7 @@
 angular.module('tournia.controllers', [])
 
 
-.controller('MatchesCtrl', function($scope, Matches, $ionicModal, $http, $stateParams, Tournaments, Matches) {
+.controller('MatchesCtrl', function($scope, Matches, $ionicModal, $http, $stateParams, Tournaments, Matches, $stateParams, $rootScope) {
     $scope.doRefresh = function() {
         self.updateView();
     };
@@ -139,11 +139,12 @@ angular.module('tournia.controllers', [])
         $scope.secondCallModal.hide();
     }
 
+    $rootScope.tournamentUrl = $stateParams.tournamentUrl;
 })
 
 
 
-.controller('RankingsCtrl', function($scope, Rankings) {
+.controller('RankingsCtrl', function($scope, Rankings, $stateParams, $rootScope) {
     Rankings.getPools().then(function(data){
             $scope.pools = data;
         });
@@ -169,9 +170,10 @@ angular.module('tournia.controllers', [])
             $scope.$broadcast('scroll.refreshComplete');
         }
     };
+    $rootScope.tournamentUrl = $stateParams.tournamentUrl;
 })
 
-.controller('PlayersCtrl', function($scope, Matches) {
+.controller('PlayersCtrl', function($scope, Matches, $stateParams, $rootScope) {
     $scope.searchPlayer = function(searchText) {
         if ((searchText == null) || (searchText == '')) {
             $scope.searchMatches = {};
@@ -183,6 +185,7 @@ angular.module('tournia.controllers', [])
             });
         }
     }
+    $rootScope.tournamentUrl = $stateParams.tournamentUrl;
 })
 
 .controller('AppCtrl', function($scope, $ionicModal, $http, $ionicPopup, $localstorage, authService, $rootScope, $stateParams, Settings) {
@@ -268,8 +271,6 @@ angular.module('tournia.controllers', [])
         //console.log('Ionic Push: Got token ', data.token, data.platform);
         $scope.token = data.token;
     });
-
-    $rootScope.tournamentUrl = $stateParams.tournamentUrl;
 })
 
 .controller('TournamentsCtrl', function($scope, $localstorage, $http, $rootScope, $ionicDeploy) {
@@ -324,7 +325,7 @@ angular.module('tournia.controllers', [])
     });
 })
 
-.controller('InfoCtrl', function($scope, $stateParams, $localstorage, $http, $ionicLoading, Tournaments, $stateParams, $cordovaInAppBrowser) {
+.controller('InfoCtrl', function($scope, $stateParams, $localstorage, $http, $ionicLoading, Tournaments, $stateParams, $cordovaInAppBrowser, $stateParams, $rootScope) {
     $ionicLoading.show({
         templateUrl: 'templates/loadingPane.html'
     });
@@ -338,10 +339,11 @@ angular.module('tournia.controllers', [])
         $scope.tournament = tournament;
         $ionicLoading.hide();
     });
+    $rootScope.tournamentUrl = $stateParams.tournamentUrl;
 })
 
-.controller('TabsController', function($scope, $stateParams) {
-    $scope.tournamentUrl = $stateParams.tournamentUrl;
+.controller('TabsController', function($scope, $stateParams, $rootScope) {
+    //$scope.tournamentUrl = $stateParams.tournamentUrl;
 })
 
 
