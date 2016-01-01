@@ -26,7 +26,7 @@
                             {{ match.pool }}
                         </td>
                         <td class="localId">
-                            {{ match.localId }}
+                            <span class="label label-info" ng-if="match.priority">Priority</span> {{ match.localId }}
                         </td>
                         <td class="team team1 text-right">
                             <span class="player" ng-repeat="player in match.team1.players">{{player.name}}</span>
@@ -53,10 +53,12 @@
                             <strong>{{ match.location }}</strong>
                         </td>
                         <td class="pool">
-                            {{ match.pool }}
+                            <span>{{ match.pool }}</span>
+                            <span ng-if="!match.pool">&nbsp;</span>
                         </td>
                         <td class="localId">
-                            {{ match.localId }}
+                            <span>{{ match.localId }}</span>
+                            <span ng-if="!match.localId">-</span>
                         </td>
                         <td class="team team1 text-right">
                             <span class="player" ng-repeat="player in match.team1Players">{{player}}</span>
