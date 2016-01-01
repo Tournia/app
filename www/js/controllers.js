@@ -275,7 +275,7 @@ angular.module('tournia.controllers', [])
 
 .controller('TournamentsCtrl', function($scope, $localstorage, $http, $rootScope, $ionicDeploy) {
     updateMyTournaments = function() {
-        $http.get(apiUrl +'/mytournaments').
+        $http.get(apiUrl +'/tournaments/my').
         success(function(data, status, headers, config) {
             $scope.mytournaments = data;
         });

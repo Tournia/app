@@ -60,7 +60,8 @@ angular.module('tournia.services', [])
         return {
             getUpcoming: function() {
                 var deferred = $q.defer();
-                $http.post(apiUrl +'/'+ $stateParams.tournamentUrl +'/matches/liststatus', {status:'ready', startPos: 0, limit: 10}).success(function(data){
+                url = apiUrl +'/'+ $stateParams.tournamentUrl +'/matches/liststatus?status=ready&startPos=0&limit=10';
+                $http.get(url).success(function(data){
                     deferred.resolve(data);
                 }).error(function(){
                     deferred.reject("An error occurred while fetching items");
@@ -79,7 +80,8 @@ angular.module('tournia.services', [])
             getFinished: function(page) {
                 var deferred = $q.defer();
                 var startPos = page * 10;
-                $http.post(apiUrl +'/'+ $stateParams.tournamentUrl +'/matches/liststatus', {status:'played', startPos: startPos, limit: 10, sortOrder: 'DESC'}).success(function(data){
+                url = apiUrl +'/'+ $stateParams.tournamentUrl +'/matches/liststatus?status=played&startPos='+ startPos +'&limit=10&sortOrder=DESC';
+                $http.get(url).success(function(data){
                     deferred.resolve(data);
                 }).error(function(){
                     deferred.reject("An error occurred while fetching items");
@@ -88,7 +90,8 @@ angular.module('tournia.services', [])
             },
             searchPlayer: function(searchText) {
                 var deferred = $q.defer();
-                $http.post(apiUrl +'/'+ $stateParams.tournamentUrl +'/matches/listsearch', {searchQuery:searchText}).success(function(data){
+                url = apiUrl +'/'+ $stateParams.tournamentUrl +'/matches/listsearch?searchQuery='+ searchText;
+                $http.get(url).success(function(data){
                     deferred.resolve(data);
                 }).error(function(){
                     deferred.reject("An error occurred while fetching items");
@@ -132,7 +135,7 @@ angular.module('tournia.services', [])
 
                 var deferred = $q.defer();
                 $.ajax({
-                    type: 'POST',
+                    type: 'PUT',
                     cache: false,
                     data: postData,
                     url: apiUrl +'/'+ tournament.url +'/matches/score',
@@ -166,7 +169,7 @@ angular.module('tournia.services', [])
 
                 var deferred = $q.defer();
                 $.ajax({
-                    type: 'POST',
+                    type: 'PUT',
                     cache: false,
                     data: postData,
                     url: apiUrl +'/'+ tournament.url +'/matches/secondcall',
