@@ -17,6 +17,7 @@
                 <h2 class="table-title">
                     Upcoming matches
                 </h2>
+                <h4 ng-if="upcomingMatches.length == 0">No upcoming matches</h4>
 
                 <table id="upcoming-matches-table" class="table team-table">
                     <tbody>
@@ -42,6 +43,8 @@
                 <h2 class="table-title">
                     Current matches
                 </h2>
+                <h4 ng-if="currentMatches.length == 0">No current matches</h4>
+
                 <table id="current-matches-table" class="table team-table">
                     <tbody>
                     <tr ng-repeat="match in currentMatches">
@@ -78,7 +81,9 @@
                 <h2 class="table-title">
                     Finished matches
                 </h2>
-                <table id="finished-matches-table" class="table team-table">
+                <h4 ng-if="finishedMatches.length == 0">No finished matches</h4>
+
+                <table id="finished-matches-table" class="table team-table" ng-if="finishedMatches.length != 0">
                     <tbody>
                     <tr ng-repeat="match in finishedMatches">
                         <td class="pool">
