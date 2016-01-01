@@ -273,7 +273,7 @@ angular.module('tournia.controllers', [])
     });
 })
 
-.controller('TournamentsCtrl', function($scope, $localstorage, $http, $rootScope, $ionicDeploy) {
+.controller('TournamentsCtrl', function($scope, $localstorage, $http, $rootScope) {
     updateMyTournaments = function() {
         $http.get(apiUrl +'/tournaments/my').
         success(function(data, status, headers, config) {
@@ -294,7 +294,7 @@ angular.module('tournia.controllers', [])
 
 
     // Update app code with new release from Ionic Deploy
-    $rootScope.doUpdate = function() {
+    /*$rootScope.doUpdate = function() {
         $rootScope.updateText = "Downloading";
         // Download the updates
         $ionicDeploy.download().then(function() {
@@ -322,7 +322,8 @@ angular.module('tournia.controllers', [])
         if (hasUpdate) {
             console.log('Ionic Deploy: Update available: ' + hasUpdate);
         }
-    });
+    });*/
+    $rootScope.hasUpdate = false;
 })
 
 .controller('InfoCtrl', function($scope, $stateParams, $localstorage, $http, $ionicLoading, Tournaments, $stateParams, $cordovaInAppBrowser, $stateParams, $rootScope) {
