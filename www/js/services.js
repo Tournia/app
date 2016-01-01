@@ -23,7 +23,7 @@ angular.module('tournia.services', [])
         },
         get: function(poolId) {
             var deferred = $q.defer();
-            $http.get(apiUrl +'/'+ $stateParams.tournamentUrl +'/ranking/pool/'+ poolId).success(function(data){
+            $http.get(apiUrl +'/'+ $stateParams.tournamentUrl +'/rankings/pool/'+ poolId).success(function(data){
                 deferred.resolve(data);
             });
             return deferred.promise;
